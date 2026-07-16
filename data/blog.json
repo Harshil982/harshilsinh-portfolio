@@ -1,0 +1,64 @@
+[
+  {
+    "id": "blog-1",
+    "slug": "reusable-component-architecture",
+    "title": "Building Reusable Component Architecture in React",
+    "excerpt": "How I structure component folders, props, and variants so a design system stays consistent as a product grows past a dozen screens.",
+    "content": [
+      "Most React codebases don't fail because of a bad framework choice — they fail because components grow one prop at a time until nobody can predict what a change will break.",
+      "The pattern I default to: a small set of primitive, style-only components (Button, Card, Badge) composed into feature components that own behavior and data, never the other way around.",
+      "Variants live behind a single `variant` prop backed by class-variance-authority, not a spread of boolean props like `isPrimary`, `isLarge`, `isRounded`. It keeps the API surface predictable and the Tailwind classes centralized in one place.",
+      "The payoff shows up months later: a rebrand or design tweak touches a handful of primitive files instead of every screen in the app."
+    ],
+    "date": "2026-05-12",
+    "readTime": "6 min read",
+    "tags": ["React", "Architecture", "Design Systems"],
+    "coverSeed": "reusable-component-architecture"
+  },
+  {
+    "id": "blog-2",
+    "slug": "zustand-vs-redux-when-to-choose",
+    "title": "Zustand vs. Redux: Choosing State Management by Problem Shape",
+    "excerpt": "After shipping both in production, here's the practical difference I actually care about — not the philosophy debate.",
+    "content": [
+      "Redux earns its ceremony when state is genuinely shared across unrelated feature areas and you need time-travel debugging or middleware-driven side effects.",
+      "Zustand wins when state is scoped to a feature — a booking calendar, a multi-step form — and you want to avoid boilerplate without losing devtools support.",
+      "On the Co-Workspace Management project, booking/resource availability lived in a normalized Zustand store per location; cross-cutting auth and notification state stayed in Redux from an earlier module.",
+      "The real lesson: pick per problem, not per project. Mixing both is fine if the boundaries are clear."
+    ],
+    "date": "2026-03-02",
+    "readTime": "5 min read",
+    "tags": ["State Management", "Redux", "Zustand"],
+    "coverSeed": "zustand-vs-redux-when-to-choose"
+  },
+  {
+    "id": "blog-3",
+    "slug": "animation-that-clarifies-not-decorates",
+    "title": "Animation That Clarifies State, Not Just Decorates It",
+    "excerpt": "A framework for deciding when motion earns its place in a UI, and when it's just noise.",
+    "content": [
+      "Before adding a transition, I ask what state change it's communicating — loading, success, focus, hierarchy. If the answer is 'it looks nice,' that's a signal to cut it or shorten it.",
+      "Framer Motion's `whileInView` and layout animations do most of the heavy lifting for reveal and reordering. GSAP earns its keep only for scroll-pinned or timeline-scrubbed sequences that Framer can't express cleanly.",
+      "Every animation in this portfolio respects `prefers-reduced-motion` — accessibility isn't optional polish, it's part of the animation spec from day one."
+    ],
+    "date": "2026-01-20",
+    "readTime": "4 min read",
+    "tags": ["Animation", "Framer Motion", "Accessibility"],
+    "coverSeed": "animation-that-clarifies-not-decorates"
+  },
+  {
+    "id": "blog-4",
+    "slug": "performance-budgets-for-frontend-teams",
+    "title": "Setting Performance Budgets Your Team Will Actually Keep",
+    "excerpt": "Lighthouse scores are easy to chase and easy to lose. Here's how to make performance a release gate instead of a one-time audit.",
+    "content": [
+      "A performance budget only works if it's enforced automatically — bundle-size checks in CI catch regressions long before a manual Lighthouse run would.",
+      "Dynamic imports for below-the-fold, interaction-heavy sections (carousels, modals, charts) consistently gave the biggest wins with the least risk.",
+      "The hardest part isn't the tooling, it's the review culture: treating a bundle-size increase the same way you'd treat a failing test."
+    ],
+    "date": "2025-11-08",
+    "readTime": "5 min read",
+    "tags": ["Performance", "Next.js", "CI/CD"],
+    "coverSeed": "performance-budgets-for-frontend-teams"
+  }
+]

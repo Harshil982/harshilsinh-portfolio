@@ -1,0 +1,30 @@
+[
+  {
+    "id": "features-shipped",
+    "title": "40+ Features Shipped",
+    "description": "Delivered end-to-end across two enterprise platforms, from spec to production.",
+    "metric": "40+",
+    "icon": "rocket"
+  },
+  {
+    "id": "bundle-optimization",
+    "title": "Performance Wins",
+    "description": "Cut key route bundle sizes through code-splitting and dynamic imports.",
+    "metric": "-35%",
+    "icon": "gauge"
+  },
+  {
+    "id": "test-coverage",
+    "title": "Test Coverage Focus",
+    "description": "Brought critical CRUD and booking flows under Jest + RTL coverage.",
+    "metric": "High",
+    "icon": "shield-check"
+  },
+  {
+    "id": "sprint-reliability",
+    "title": "Sprint Reliability",
+    "description": "Consistently closed sprint commitments across two-week Agile cycles.",
+    "metric": "95%",
+    "icon": "calendar-check"
+  }
+]

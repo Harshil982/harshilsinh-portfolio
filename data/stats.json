@@ -1,0 +1,7 @@
+[
+  { "id": "experience", "label": "Years of Experience", "value": 3, "suffix": "+", "icon": "calendar" },
+  { "id": "projects", "label": "Enterprise Projects", "value": 2, "suffix": "", "icon": "folder-kanban" },
+  { "id": "technologies", "label": "Technologies Used", "value": 20, "suffix": "+", "icon": "layers" },
+  { "id": "commits", "label": "Commits Shipped", "value": 1200, "suffix": "+", "icon": "git-commit-horizontal" },
+  { "id": "coffee", "label": "Cups of Coffee", "value": 900, "suffix": "+", "icon": "coffee" }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "claude-code",
+    "title": "Building with Claude",
+    "issuer": "Anthropic",
+    "date": "2026",
+    "credentialUrl": "#",
+    "icon": "sparkles",
+    "color": "primary"
+  },
+  {
+    "id": "google-ai",
+    "title": "Google AI Essentials",
+    "issuer": "Google",
+    "date": "2025",
+    "credentialUrl": "#",
+    "icon": "brain-circuit",
+    "color": "secondary"
+  },
+  {
+    "id": "meta-frontend",
+    "title": "Meta Front-End Developer",
+    "issuer": "Meta",
+    "date": "2024",
+    "credentialUrl": "#",
+    "icon": "layout-panel-left",
+    "color": "accent"
+  },
+  {
+    "id": "advanced-react",
+    "title": "Advanced React Patterns",
+    "issuer": "Frontend Masters",
+    "date": "2024",
+    "credentialUrl": "#",
+    "icon": "atom",
+    "color": "primary"
+  },
+  {
+    "id": "aws-cloud-practitioner",
+    "title": "AWS Certified Cloud Practitioner",
+    "issuer": "Amazon Web Services",
+    "date": "2023",
+    "credentialUrl": "#",
+    "icon": "cloud",
+    "color": "secondary"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "name": "Rajput Harshilsinh",
+  "firstName": "Harshilsinh",
+  "lastName": "Rajput",
+  "initials": "HR",
+  "title": "Frontend Engineer",
+  "roles": [
+    "React Frontend Developer",
+    "Frontend Engineer",
+    "Next.js Specialist",
+    "UI Craftsman"
+  ],
+  "tagline": "React • Next.js • TypeScript",
+  "bio": "I build fast, accessible, and beautifully animated interfaces — turning product requirements into production-grade React and Next.js applications.",
+  "summary": "I'm a frontend-focused software engineer with three-plus years of experience shipping enterprise web applications end-to-end — from component architecture and state management to performance tuning and accessibility. I care about the details most teams skip: layout stability, animation timing, bundle size, and interfaces that hold up under real usage, not just in a demo.",
+  "philosophy": [
+    "Component-driven, reusable architecture over one-off code",
+    "Performance and accessibility are features, not afterthoughts",
+    "Motion should clarify state, never distract from it",
+    "Scalable state management keeps large apps maintainable"
+  ],
+  "location": "Ahmedabad, Gujarat, India",
+  "email": "rajputharshil982002@gmail.com",
+  "phone": "+91 8735008855",
+  "resumeUrl": "/resume/rajput-harshilsinh-resume.pdf",
+  "availableForWork": true,
+  "yearsOfExperience": 3,
+  "currentCompany": "Vivansh Infotech",
+  "currentRole": "Software Engineer",
+  "avatarSeed": "harshilsinh-rajput"
+}

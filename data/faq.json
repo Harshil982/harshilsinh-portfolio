@@ -1,0 +1,32 @@
+[
+  {
+    "id": "faq-1",
+    "question": "What's your core tech stack?",
+    "answer": "React and Next.js on the frontend with TypeScript, Tailwind CSS, and either Redux or Zustand for state depending on the problem shape. On the backend, Node.js/Express with PostgreSQL or MongoDB via Sequelize."
+  },
+  {
+    "id": "faq-2",
+    "question": "Are you open to remote work or relocation?",
+    "answer": "Yes to both — I'm open to fully remote roles as well as relocating for the right opportunity."
+  },
+  {
+    "id": "faq-3",
+    "question": "Do you have backend experience, or are you frontend-only?",
+    "answer": "I'm frontend-first, but I've built and maintained backend services in Express.js with PostgreSQL/Sequelize, so I'm comfortable working across the stack when needed."
+  },
+  {
+    "id": "faq-4",
+    "question": "What's your notice period?",
+    "answer": "Standard notice period applies at my current role — reach out via the contact form and I'll confirm exact availability."
+  },
+  {
+    "id": "faq-5",
+    "question": "Can I see the code behind this portfolio?",
+    "answer": "Yes — the GitHub link in the footer points to the source. It's a Next.js 16 + TypeScript + Tailwind CSS v4 project, fully JSON-driven, built as a showcase in itself."
+  },
+  {
+    "id": "faq-6",
+    "question": "Do you have testing experience?",
+    "answer": "Yes — Jest and React Testing Library for unit and UI tests, with a focus on covering CRUD and booking/invoicing edge cases rather than chasing 100% coverage for its own sake."
+  }
+]

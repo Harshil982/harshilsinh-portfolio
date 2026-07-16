@@ -1,0 +1,44 @@
+[
+  {
+    "id": "discover",
+    "step": "01",
+    "title": "Discover",
+    "description": "Understand the product goal, users, and constraints before touching a single component — requirements, edge cases, and success metrics first.",
+    "icon": "search"
+  },
+  {
+    "id": "design",
+    "step": "02",
+    "title": "Design",
+    "description": "Translate requirements into component hierarchies, state models, and interaction patterns — wireframe the data flow, not just the UI.",
+    "icon": "pencil-ruler"
+  },
+  {
+    "id": "develop",
+    "step": "03",
+    "title": "Develop",
+    "description": "Build with reusable, typed components and a clear state-management strategy, keeping the codebase scalable as features grow.",
+    "icon": "code-2"
+  },
+  {
+    "id": "test",
+    "step": "04",
+    "title": "Test",
+    "description": "Cover critical flows with Jest and React Testing Library, then validate accessibility, responsiveness, and edge cases by hand.",
+    "icon": "flask-conical"
+  },
+  {
+    "id": "deploy",
+    "step": "05",
+    "title": "Deploy",
+    "description": "Ship through CI with performance budgets in place — Lighthouse scores and bundle size are release gates, not afterthoughts.",
+    "icon": "rocket"
+  },
+  {
+    "id": "maintain",
+    "step": "06",
+    "title": "Maintain",
+    "description": "Monitor, fix, and iterate post-launch — performance regressions and bug reports get the same rigor as new feature work.",
+    "icon": "refresh-cw"
+  }
+]

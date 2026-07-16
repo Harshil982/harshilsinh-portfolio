@@ -1,0 +1,27 @@
+{
+  "tagline": "Building fast, accessible, and beautifully animated interfaces — one component at a time.",
+  "columns": [
+    {
+      "title": "Explore",
+      "links": [
+        { "label": "About", "href": "#about" },
+        { "label": "Experience", "href": "#experience" },
+        { "label": "Projects", "href": "#projects" },
+        { "label": "Frontend Showcase", "href": "#showcase" }
+      ]
+    },
+    {
+      "title": "More",
+      "links": [
+        { "label": "Skills", "href": "#skills" },
+        { "label": "Timeline", "href": "#timeline" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Contact", "href": "#contact" }
+      ]
+    }
+  ],
+  "copyrightName": "Rajput Harshilsinh",
+  "bottomLinks": [
+    { "label": "Resume", "href": "/resume/rajput-harshilsinh-resume.pdf" }
+  ]
+}

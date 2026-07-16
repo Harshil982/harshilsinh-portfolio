@@ -1,0 +1,38 @@
+[
+  {
+    "id": "testimonial-1",
+    "name": "Priya Mehta",
+    "role": "Engineering Manager",
+    "company": "Tatvasoft",
+    "quote": "Harshilsinh consistently turned ambiguous requirements into clean, well-tested React modules. The Charge Point Operator invoicing flow he owned barely needed a bug-fix pass after launch.",
+    "avatarSeed": "priya-mehta",
+    "rating": 5
+  },
+  {
+    "id": "testimonial-2",
+    "name": "Karan Shah",
+    "role": "Senior Backend Engineer",
+    "company": "Tatvasoft",
+    "quote": "Great to pair with on API contracts — he thinks about the frontend consumption pattern early, which saved us several rounds of endpoint rework.",
+    "avatarSeed": "karan-shah",
+    "rating": 5
+  },
+  {
+    "id": "testimonial-3",
+    "name": "Ananya Iyer",
+    "role": "Product Manager",
+    "company": "Vivansh Infotech",
+    "quote": "He picks up new feature areas fast and communicates trade-offs clearly instead of just saying yes to every scope addition.",
+    "avatarSeed": "ananya-iyer",
+    "rating": 5
+  },
+  {
+    "id": "testimonial-4",
+    "name": "Devansh Patel",
+    "role": "Tech Lead",
+    "company": "Vivansh Infotech",
+    "quote": "Solid instincts on state management — the Zustand-based booking store he designed handled multi-location conflicts we hadn't even fully spec'd out yet.",
+    "avatarSeed": "devansh-patel",
+    "rating": 4
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "vivansh-infotech",
+    "company": "Vivansh Infotech",
+    "companyInitials": "VI",
+    "role": "Software Engineer",
+    "duration": "Oct 2025 — Present",
+    "startDate": "2025-10",
+    "endDate": "Present",
+    "location": "Ahmedabad, India",
+    "type": "Full-time",
+    "summary": "Building and maintaining enterprise web applications with a focus on responsive, state-driven UIs across operator and member-facing portals.",
+    "achievements": [
+      "Shipped multiple enterprise modules end-to-end using React.js, Zustand, Next.js, Tailwind CSS, and Material UI",
+      "Delivered CRUD-heavy features with Redux-driven state management for consistently responsive user experiences",
+      "Active participant in Agile ceremonies and code reviews across a cross-functional team"
+    ],
+    "responsibilities": [
+      "Developed enterprise web application modules using React.js, Next.js, Tailwind CSS, and Material UI",
+      "Integrated REST APIs and implemented CRUD operations with efficient state management using Redux",
+      "Collaborated with cross-functional teams in an Agile environment, participating in code reviews",
+      "Used Git, Azure DevOps, and JIRA for version control and sprint management"
+    ],
+    "technologies": [
+      "React", "Next.js", "Zustand", "Redux", "Tailwind CSS", "Material UI", "Azure DevOps", "JIRA"
+    ],
+    "color": "primary"
+  },
+  {
+    "id": "tatvasoft",
+    "company": "Tatvasoft",
+    "companyInitials": "TS",
+    "role": "Software Engineer",
+    "duration": "Jan 2023 — Sep 2025",
+    "startDate": "2023-01",
+    "endDate": "2025-09",
+    "location": "Ahmedabad, India",
+    "type": "Full-time",
+    "summary": "Owned end-to-end feature delivery on modern React/Next.js applications, from backend services to tested, production-ready UI.",
+    "achievements": [
+      "Built scalable backend services with Express.js and PostgreSQL using Sequelize ORM",
+      "Wrote unit and UI tests with Jest and React Testing Library, raising confidence in shipped features",
+      "Took ownership of end-to-end feature delivery, bug fixing, and performance optimization across sprints"
+    ],
+    "responsibilities": [
+      "Worked on modern web applications using React.js, Next.js, Redux, Tailwind CSS, Material UI, and Node.js",
+      "Built and maintained scalable backend services with Express.js, PostgreSQL, and Sequelize ORM",
+      "Integrated and consumed RESTful APIs efficiently across frontend modules",
+      "Collaborated in Agile teams using JIRA, Bitbucket, and GitHub for sprint planning and version control"
+    ],
+    "technologies": [
+      "React", "Next.js", "Redux", "Node.js", "Express.js", "PostgreSQL", "Sequelize", "Tailwind CSS", "Material UI", "Jest"
+    ],
+    "color": "secondary"
+  }
+]

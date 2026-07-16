@@ -1,0 +1,17 @@
+{
+  "siteName": "Rajput Harshilsinh — Frontend Engineer",
+  "siteUrl": "https://harshilsinh-rajput.dev",
+  "defaultTitle": "Rajput Harshilsinh — React & Next.js Frontend Engineer",
+  "titleTemplate": "%s — Rajput Harshilsinh",
+  "description": "Portfolio of Rajput Harshilsinh, a React and Next.js frontend engineer specializing in scalable, animated, accessible web applications.",
+  "keywords": [
+    "Rajput Harshilsinh",
+    "Frontend Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Portfolio"
+  ],
+  "twitterHandle": "@harshilsinhdev",
+  "locale": "en_US"
+}

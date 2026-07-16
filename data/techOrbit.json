@@ -1,0 +1,35 @@
+{
+  "center": { "name": "React", "icon": "react" },
+  "rings": [
+    {
+      "radius": 110,
+      "duration": 18,
+      "items": [
+        { "name": "Next.js", "icon": "nextjs" },
+        { "name": "TypeScript", "icon": "typescript" },
+        { "name": "Tailwind CSS", "icon": "tailwind" }
+      ]
+    },
+    {
+      "radius": 175,
+      "duration": 26,
+      "reverse": true,
+      "items": [
+        { "name": "Redux", "icon": "redux" },
+        { "name": "Zustand", "icon": "zustand" },
+        { "name": "Node.js", "icon": "nodejs" },
+        { "name": "Express.js", "icon": "express" }
+      ]
+    },
+    {
+      "radius": 240,
+      "duration": 34,
+      "items": [
+        { "name": "MongoDB", "icon": "mongodb" },
+        { "name": "PostgreSQL", "icon": "postgresql" },
+        { "name": "Git", "icon": "github" },
+        { "name": "Jest", "icon": "jest" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "charge-point-operator",
+    "slug": "charge-point-operator",
+    "title": "Charge Point Operator",
+    "tagline": "Real-time EV charging network management",
+    "category": "Enterprise",
+    "status": "Shipped",
+    "duration": "8 months",
+    "overview": "A web application for managing EV charging stations, giving operators real-time access to station health, maintenance scheduling, and third-party integrations.",
+    "description": "Charge Point Operator is the internal console operators use to run a network of EV charging stations. It covers live station status, user access control, maintenance workflows, and invoicing — all built as a component-driven React application talking to a REST backend.",
+    "features": [
+      "Live station management dashboard with status, uptime, and maintenance flags",
+      "Role-based user access module for operators and field technicians",
+      "Invoicing workflows tied to charging sessions",
+      "Third-party integration hooks for payment and telemetry providers"
+    ],
+    "responsibilities": [
+      "Developed multiple frontend modules including station management, user access, and invoicing",
+      "Implemented CRUD operations with efficient state management using Redux",
+      "Wrote unit and UI test cases using Jest and React Testing Library for better reliability",
+      "Followed component-based architecture for a scalable UI and enforced code quality through reviews"
+    ],
+    "challenges": [
+      {
+        "challenge": "Station status needed to feel real-time without hammering the API",
+        "solution": "Centralized polling with Redux-managed cache invalidation, so only stale station records refetch instead of the whole list"
+      },
+      {
+        "challenge": "Invoicing screens had deeply nested, reusable form logic",
+        "solution": "Extracted shared form primitives and validation into composable components, cutting duplicated logic across invoicing flows"
+      }
+    ],
+    "technologies": ["React", "Redux", "Tailwind CSS", "Material UI", "Jest", "React Testing Library"],
+    "architecture": {
+      "frontend": "React with a component-based, feature-folder architecture",
+      "stateManagement": "Redux for shared/cross-module state, local state for isolated UI",
+      "styling": "Tailwind CSS utility classes with Material UI for complex form controls",
+      "testing": "Jest + React Testing Library covering critical CRUD and invoicing flows",
+      "notes": "REST APIs consumed through a typed service layer to keep components decoupled from fetch logic"
+    },
+    "metrics": [
+      { "label": "Frontend modules shipped", "value": "6+" },
+      { "label": "Test coverage on core flows", "value": "High" },
+      { "label": "Team size", "value": "4 engineers" }
+    ],
+    "screenshots": [
+      { "caption": "Station management dashboard" },
+      { "caption": "User access & role management" },
+      { "caption": "Invoicing workflow" }
+    ],
+    "github": "#",
+    "live": "#",
+    "color": "primary",
+    "gradientSeed": "charge-point-operator"
+  },
+  {
+    "id": "co-workspace-management",
+    "slug": "co-workspace-management",
+    "title": "Co-Workspace Management",
+    "tagline": "Operator and member portals for co-working spaces",
+    "category": "Enterprise",
+    "status": "Shipped",
+    "duration": "10 months",
+    "overview": "A web application for managing co-working spaces, enabling workspace operations, resource allocation, bookings, invoicing, and tenant management through dedicated operator and member portals.",
+    "description": "Co-Workspace Management is a dual-portal platform: operators run day-to-day workspace operations across locations, while members book rooms, manage their workspace, and track invoices — all from a unified, state-driven React/Next.js frontend.",
+    "features": [
+      "Operator dashboard with calendar, location, and tenant management",
+      "Multi-location resource and room booking system",
+      "Member portal with booking timeline and workspace management",
+      "Order processing, invoicing, and customer service ticketing"
+    ],
+    "responsibilities": [
+      "Developed multiple frontend modules for operator and member portals, including dashboard, calendar, location management, tenant management, order processing, invoicing, and customer service tickets",
+      "Built booking and resource management features to efficiently handle workspace reservations, room allocation, and resource availability across multiple locations",
+      "Developed member portal functionality including workspace management, booking timeline, and member details",
+      "Integrated REST APIs, implemented CRUD operations, and managed application state efficiently using Zustand"
+    ],
+    "challenges": [
+      {
+        "challenge": "Booking availability had to stay consistent across multiple locations and overlapping time slots",
+        "solution": "Modeled availability as a normalized Zustand store keyed by location/resource, so conflicting bookings are caught client-side before hitting the API"
+      },
+      {
+        "challenge": "Operator and member portals shared data but needed very different UI density",
+        "solution": "Split shared domain logic into hooks/services and kept presentation layers separate per portal, avoiding a bloated one-size-fits-all component set"
+      }
+    ],
+    "technologies": ["React", "Next.js", "Zustand", "Tailwind CSS", "Material UI"],
+    "architecture": {
+      "frontend": "Next.js App Router with feature-based module boundaries for operator vs member portals",
+      "stateManagement": "Zustand for booking/resource state, colocated hooks for portal-specific logic",
+      "styling": "Tailwind CSS with a shared design system of Material UI components",
+      "testing": "Component-level checks on booking and invoicing edge cases",
+      "notes": "Calendar and timeline views built as reusable primitives shared between both portals"
+    },
+    "metrics": [
+      { "label": "Portals shipped", "value": "2 (Operator + Member)" },
+      { "label": "Locations supported", "value": "Multi-location" },
+      { "label": "Core modules", "value": "8+" }
+    ],
+    "screenshots": [
+      { "caption": "Operator dashboard & calendar" },
+      { "caption": "Multi-location booking flow" },
+      { "caption": "Member portal booking timeline" }
+    ],
+    "github": "#",
+    "live": "#",
+    "color": "secondary",
+    "gradientSeed": "co-workspace-management"
+  }
+]

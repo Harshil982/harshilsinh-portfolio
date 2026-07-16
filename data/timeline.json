@@ -1,0 +1,83 @@
+[
+  {
+    "id": "ldrp-start",
+    "date": "2019",
+    "title": "Started B.E. Computer Engineering",
+    "subtitle": "LDRP Institute of Technology & Research",
+    "description": "Began a Bachelor of Engineering in Computer Engineering in Gandhinagar, Gujarat — first exposure to data structures, databases, and the web.",
+    "type": "education",
+    "icon": "graduation-cap"
+  },
+  {
+    "id": "ldrp-graduate",
+    "date": "2023",
+    "title": "Graduated & joined Tatvasoft",
+    "subtitle": "LDRP Institute → Tatvasoft",
+    "description": "Completed my engineering degree and joined Tatvasoft as a Software Engineer, moving straight into production React and Node.js work.",
+    "type": "job",
+    "icon": "graduation-cap"
+  },
+  {
+    "id": "charge-point-shipped",
+    "date": "2023",
+    "title": "Shipped Charge Point Operator",
+    "subtitle": "Project",
+    "description": "Delivered station management, user access, and invoicing modules for an EV charging network console, with Jest/RTL coverage on core flows.",
+    "type": "project",
+    "icon": "zap"
+  },
+  {
+    "id": "coworkspace-shipped",
+    "date": "2024",
+    "title": "Shipped Co-Workspace Management",
+    "subtitle": "Project",
+    "description": "Built operator and member portals for a multi-location co-working platform, introducing Zustand for booking/resource state.",
+    "type": "project",
+    "icon": "building-2"
+  },
+  {
+    "id": "react-cert",
+    "date": "2024",
+    "title": "Advanced React Patterns Certificate",
+    "subtitle": "Certificate",
+    "description": "Completed a certification deepening component architecture, performance, and state-management patterns in React.",
+    "type": "certificate",
+    "icon": "award"
+  },
+  {
+    "id": "tatvasoft-end",
+    "date": "Sep 2025",
+    "title": "Wrapped up at Tatvasoft",
+    "subtitle": "Tatvasoft",
+    "description": "Closed out close to three years of end-to-end feature delivery, backend services, and testing practice.",
+    "type": "job",
+    "icon": "briefcase"
+  },
+  {
+    "id": "vivansh-start",
+    "date": "Oct 2025",
+    "title": "Joined Vivansh Infotech",
+    "subtitle": "Vivansh Infotech",
+    "description": "Started as a Software Engineer building enterprise web applications with React, Next.js, Zustand, and Azure DevOps-driven delivery.",
+    "type": "job",
+    "icon": "briefcase"
+  },
+  {
+    "id": "current-goal",
+    "date": "2026",
+    "title": "Deepening system design & architecture",
+    "subtitle": "Current focus",
+    "description": "Focused on scalable frontend architecture, design systems, and mentoring — moving from feature delivery into technical ownership.",
+    "type": "goal",
+    "icon": "target"
+  },
+  {
+    "id": "future-goal",
+    "date": "2027 & beyond",
+    "title": "Senior / Lead Frontend Engineer",
+    "subtitle": "Future goal",
+    "description": "Aiming for a senior or lead frontend role driving architecture decisions and design systems across an entire product surface.",
+    "type": "goal",
+    "icon": "flag"
+  }
+]
