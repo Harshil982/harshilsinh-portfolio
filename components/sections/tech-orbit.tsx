@@ -25,14 +25,17 @@ export function TechOrbit() {
 
         <Reveal className="mt-16">
           <div
-            className="relative mx-auto flex aspect-square w-full max-w-xl items-center justify-center"
+            className="relative mx-auto flex aspect-square w-full max-w-xl items-center justify-center overflow-hidden [--orbit-scale:0.36] sm:[--orbit-scale:0.5] md:[--orbit-scale:0.68] lg:[--orbit-scale:1]"
             aria-hidden="true"
           >
             {techOrbit.rings.map((ring) => (
               <div
                 key={ring.radius}
                 className="absolute rounded-full border border-dashed border-border/70"
-                style={{ width: ring.radius * 2, height: ring.radius * 2 }}
+                style={{
+                  width: `calc(${ring.radius * 2}px * var(--orbit-scale))`,
+                  height: `calc(${ring.radius * 2}px * var(--orbit-scale))`,
+                }}
               />
             ))}
 
@@ -44,7 +47,7 @@ export function TechOrbit() {
               ring.items.map((item, index) => {
                 const delay = -(index / ring.items.length) * ring.duration;
                 const style: OrbitStyle = {
-                  "--orbit-radius": `${ring.radius}px`,
+                  "--orbit-radius": `calc(${ring.radius}px * var(--orbit-scale))`,
                   animationName: "orbit",
                   animationDuration: `${ring.duration}s`,
                   animationTimingFunction: "linear",
