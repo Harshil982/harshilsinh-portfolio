@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { navigation, personal } from "@/lib/data";
@@ -24,7 +24,6 @@ const sectionIds = navigation.navItems
 
 export function Navbar() {
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activeSection = useUIStore((state) => state.activeSection);
   const mobileMenuOpen = useUIStore((state) => state.mobileMenuOpen);
@@ -33,15 +32,11 @@ export function Navbar() {
   useActiveSection(sectionIds);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
     setScrolled(latest > 16);
-    setHidden(latest > previous && latest > 160);
   });
 
   return (
-    <motion.header
-      animate={{ y: hidden ? "-100%" : "0%" }}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+    <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled ? "glass" : "bg-transparent"
@@ -50,7 +45,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <Link
           href="/"
-          className="font-display text-lg font-bold tracking-tight"
+          className="rounded-md font-display text-lg font-bold tracking-tight outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <span className="text-gradient">{personal.initials}</span>
           <span className="sr-only">{personal.name}</span>
@@ -62,7 +57,7 @@ export function Navbar() {
               <NavLink
                 href={item.href}
                 className={cn(
-                  "rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
+                  "rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring",
                   activeSection === item.id && "bg-foreground/5 text-foreground"
                 )}
               >
@@ -98,7 +93,7 @@ export function Navbar() {
                       href={item.href}
                       onNavigate={() => setMobileMenuOpen(false)}
                       className={cn(
-                        "block rounded-lg px-4 py-3 text-base font-medium text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground",
+                        "block rounded-lg px-4 py-3 text-base font-medium text-muted-foreground outline-none transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring",
                         activeSection === item.id &&
                           "bg-foreground/5 text-foreground"
                       )}
@@ -117,6 +112,6 @@ export function Navbar() {
           </Sheet>
         </div>
       </nav>
-    </motion.header>
+    </header>
   );
 }

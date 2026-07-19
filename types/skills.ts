@@ -29,6 +29,6 @@ export interface OrbitRing {
 }
 
 export interface TechOrbitData {
-  center: OrbitItem;
+  center: OrbitItem[];
   rings: OrbitRing[];
 }

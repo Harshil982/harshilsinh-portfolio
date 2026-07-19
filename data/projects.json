@@ -108,5 +108,176 @@
     "live": "#",
     "color": "secondary",
     "gradientSeed": "co-workspace-management"
+  },
+  {
+    "id": "smart-city-iot-platform",
+    "slug": "smart-city-iot-platform",
+    "title": "Smart City",
+    "tagline": "IoT device management and analytics for infrastructure operators",
+    "category": "Enterprise",
+    "status": "Shipped",
+    "duration": "6 months",
+    "overview": "A serverless, cloud-hosted platform that gives infrastructure operators a single place to manage IoT devices, watch sensor data come in on a live map, and set up rules that react to it automatically.",
+    "description": "Smart City is the operator-facing platform behind a city's IoT device fleet — device provisioning and health, map-based sensor visualization, webhook-driven data ingestion, and a rule engine that turns raw sensor readings into alerts and automated actions. I joined after the first version had already shipped and spent a large part of my time modernizing a codebase that had fallen behind, alongside building out several of its core modules.",
+    "features": [
+      "Device management for provisioning, monitoring, and tracking the health of connected IoT hardware",
+      "Map-based visualization of live and historical sensor data across managed sites",
+      "Webhook ingestion with ETL workflows that normalize incoming sensor payloads before they're stored",
+      "A rule engine for threshold-based alerts and automated actions triggered by sensor data",
+      "Per-app workspaces so operators can scope devices, rules, and dashboards to a given deployment"
+    ],
+    "responsibilities": [
+      "Migrated a legacy class-component codebase to functional components with hooks, module by module, without breaking the dashboards still running on the old pattern",
+      "Modernized the dependency tree to run on current Node.js LTS and fixed the compatibility breaks that surfaced along the way",
+      "Built out the rule engine, device management, app management, and analytics modules",
+      "Added map- and chart-based visualizations for sensor analytics, including device locations, historical readings, and alert states",
+      "Raised test coverage and cleaned up patterns left over from the legacy codebase, improving both readability and runtime performance"
+    ],
+    "challenges": [
+      {
+        "challenge": "The class-to-functional migration touched shared state that dozens of existing components still depended on — rewriting it in one pass risked breaking dashboards operators were actively using.",
+        "solution": "Migrated module by module behind the existing prop and context contracts, converting lifecycle methods to their hook equivalents one component at a time, and only removed the old patterns once every consumer was verified against the new implementation."
+      },
+      {
+        "challenge": "With hundreds of devices reporting on independent intervals, re-rendering the map on every incoming sensor reading made it noticeably laggy.",
+        "solution": "Decoupled marker updates from the raw data stream — readings are batched and a marker only re-renders when its value crosses a rule threshold or moves out of its last-rendered bucket, instead of on every tick."
+      }
+    ],
+    "technologies": ["React", "Redux", "Node.js", "AWS Lambda", "Chart.js", "Jest"],
+    "architecture": {
+      "frontend": "React, migrated from class components to functional components with hooks during my time on the project",
+      "stateManagement": "Redux for device, rule, and analytics state shared across modules",
+      "styling": "Tailwind CSS with chart and map components wrapped as reusable primitives",
+      "testing": "Jest coverage added incrementally during the migration, focused on the rule engine and data-transform logic",
+      "notes": "Backend runs as serverless functions (AWS Lambda) triggered by device webhooks; an ETL step normalizes each device type's payload into a canonical sensor-reading format before it reaches the rule engine"
+    },
+    "metrics": [
+      { "label": "Core modules delivered", "value": "4" },
+      { "label": "Runtime", "value": "Migrated to current Node.js LTS" },
+      { "label": "Codebase", "value": "Class → functional components" }
+    ],
+    "screenshots": [
+      { "caption": "Device fleet map view" },
+      { "caption": "Rule engine configuration" },
+      { "caption": "Sensor analytics dashboard" }
+    ],
+    "github": "#",
+    "live": "#",
+    "color": "accent",
+    "gradientSeed": "smart-city-iot-platform"
+  },
+  {
+    "id": "sims-inventory-management",
+    "slug": "sims-inventory-management",
+    "title": "SIMS — Smart Inventory Management System",
+    "tagline": "Multi-tenant inventory management with role-scoped access",
+    "category": "Enterprise",
+    "status": "Shipped",
+    "duration": "7 months",
+    "overview": "A multi-tenant inventory platform where each tenant manages their own stock, orders, and users — with low-stock alerts, full order CRUD, and four roles (Super Admin, Admin, Manager, User) that are scoped per tenant, not just per account.",
+    "description": "SIMS is built for businesses managing inventory across multiple tenants from one platform. Each tenant gets its own inventory, order history, users, and alert thresholds, and every role — from Super Admin down to a regular User — is scoped to the tenant it belongs to, so nothing from one tenant is ever visible to another.",
+    "features": [
+      "Multi-tenant inventory tracking, fully isolated per tenant",
+      "Configurable low-stock thresholds that trigger alerts before items run out",
+      "Full CRUD for purchase and sales orders",
+      "Four-tier role hierarchy — Super Admin, Admin, Manager, User — scoped per tenant",
+      "Notification system surfacing stock alerts and order events to the relevant roles"
+    ],
+    "responsibilities": [
+      "Built the multi-tenant data access layer so inventory, orders, and users stayed isolated per tenant at both the API and UI layer",
+      "Implemented configurable stock-threshold alerting, including per-tenant thresholds and alert delivery",
+      "Built CRUD flows for purchase and sales orders, including status transitions like fulfillment and cancellation",
+      "Implemented role-based UI and route guarding across four roles, each scoped to its tenant rather than global",
+      "Built the notification module surfacing threshold and order events to the roles responsible for acting on them"
+    ],
+    "challenges": [
+      {
+        "challenge": "Roles weren't just role-based, they were role-scoped-per-tenant — a Manager in one tenant needed the same permissions as a Manager in another, but neither should see or affect the other's data.",
+        "solution": "Modeled permissions as (tenant, role) pairs instead of a flat role enum, and enforced tenant scoping at the API query layer as well as route guards, rather than relying on the frontend alone to hide unauthorized data."
+      },
+      {
+        "challenge": "Threshold alerts fired on every stock update near the limit, which meant a slow-moving item hovering around its threshold could spam the same alert repeatedly.",
+        "solution": "Added hysteresis to the alert logic: an alert fires once when stock crosses below the threshold and clears once stock is restocked past a buffer above it, rather than re-evaluating and re-alerting on every update."
+      }
+    ],
+    "technologies": ["React", "Redux", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS", "Material UI"],
+    "architecture": {
+      "frontend": "React with role-aware route guards shared across a common component layer",
+      "stateManagement": "Redux for tenant, role, and inventory state; local state for order forms",
+      "styling": "Tailwind CSS with Material UI for inventory and order data grids",
+      "testing": "Jest coverage on threshold-alert logic and tenant/role permission edge cases",
+      "notes": "Every API call is scoped by tenant ID resolved from the authenticated session, enforced on both client and server"
+    },
+    "metrics": [
+      { "label": "User roles", "value": "4 (Super Admin → User)" },
+      { "label": "Tenancy model", "value": "Fully multi-tenant" },
+      { "label": "Core modules", "value": "5+" }
+    ],
+    "screenshots": [
+      { "caption": "Tenant inventory dashboard" },
+      { "caption": "Low-stock alert configuration" },
+      { "caption": "Role-scoped order management" }
+    ],
+    "github": "#",
+    "live": "#",
+    "color": "primary",
+    "gradientSeed": "sims-inventory-management"
+  },
+  {
+    "id": "afterwords-legacy-messaging",
+    "slug": "afterwords",
+    "title": "Afterwords",
+    "tagline": "Confidential legacy-messaging platform (name changed for confidentiality)",
+    "category": "Enterprise",
+    "status": "Shipped",
+    "duration": "11 months",
+    "overview": "A platform for recording messages to the people you love and having them delivered later — right after you're gone, or years from now on a specific date. Renamed here since the real project name is under NDA.",
+    "description": "Afterwords lets a user record text, audio, or video messages for the people in their life and control exactly when those messages get delivered. A network of Notifiers confirms when the user has passed, Trustees handle messages tied to future events rather than death, and Recipients simply receive what was left for them — all built around four distinct roles (Owner, Recipient, Trustee, Notifier) and five core modules: Dashboard, Messages, Notifiers, Trustees, and Profile.",
+    "features": [
+      "Four role-scoped portals — Owner, Recipient, Trustee, Notifier — each seeing only what their role needs",
+      "Message composer supporting text and in-platform audio/video recording, with per-message recipient and delivery-timing rules",
+      "Multi-notifier confirmation flow: a life event is only confirmed once enough independent notifiers corroborate it",
+      "Trustee-managed delivery for event-specific messages (e.g. a future birthday) kept separate from the death-confirmation path",
+      "Chunked, resumable upload pipeline for large in-platform video recordings"
+    ],
+    "responsibilities": [
+      "Built the Dashboard, Messages, Notifiers, Trustees, and Profile modules end-to-end",
+      "Implemented the multi-notifier confirmation workflow that gates message delivery on corroborated confirmation rather than a single report",
+      "Built the message composer, including in-platform video/audio recording and delivery-timing configuration",
+      "Designed and implemented the trustee-managed, event-specific delivery flow as a path separate from death confirmation",
+      "Owned the video upload pipeline end-to-end, including the performance rework below"
+    ],
+    "challenges": [
+      {
+        "challenge": "In-platform video messages could run into the gigabytes, and the first working version uploaded straight to S3 as a single request — a 1.8GB recording took 12-15 minutes to upload, long enough that users would back out or lose the recording on a flaky connection.",
+        "solution": "Rebuilt the upload path around S3 multipart upload: the recording is split into fixed-size chunks in a Web Worker so encoding doesn't block the UI, chunks move through a bounded upload queue backed by a small worker pool instead of one request at a time, each chunk retries independently on failure, and the parts are batched into S3's complete-multipart-upload call once everything succeeds. The same 1.8GB file went from 12-15 minutes to 90-100 seconds."
+      },
+      {
+        "challenge": "The death-confirmation flow is the most sensitive part of the product — it can't act on a single false report, but it also can't be so strict that a real event goes unconfirmed.",
+        "solution": "Modeled confirmation as a quorum: each notifier's report is logged independently, and message delivery only unlocks once a configurable number of notifiers corroborate the same event, with trustees notified at each stage so there's a human check before anything is sent."
+      }
+    ],
+    "technologies": ["React", "Next.js", "Zustand", "Node.js", "AWS S3", "Tailwind CSS"],
+    "architecture": {
+      "frontend": "Next.js with role-scoped portals (Owner, Recipient, Trustee, Notifier) sharing a common module shell",
+      "stateManagement": "Zustand for session/role state, plus a dedicated upload-queue store tracking chunk status per in-progress video",
+      "styling": "Tailwind CSS",
+      "testing": "Focused test coverage on the notifier-quorum logic and chunked-upload retry paths, given how costly a bug in either would be",
+      "notes": "Video capture built on the MediaRecorder API; uploads go through a Web Worker pool driving chunked, concurrent, resumable transfers into S3 multipart upload"
+    },
+    "metrics": [
+      { "label": "1.8GB video upload time", "value": "12-15 min → 90-100 sec" },
+      { "label": "User roles", "value": "4 (Owner, Recipient, Trustee, Notifier)" },
+      { "label": "Core modules", "value": "5" }
+    ],
+    "screenshots": [
+      { "caption": "Message composer with in-platform recording" },
+      { "caption": "Notifier confirmation flow" },
+      { "caption": "Trustee-managed event delivery" }
+    ],
+    "github": "#",
+    "live": "#",
+    "color": "secondary",
+    "gradientSeed": "afterwords"
   }
 ]

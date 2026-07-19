@@ -77,6 +77,10 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((item) => item.slug === slug);
 }
 
+export function getCertificateBySlug(slug: string): Certificate | undefined {
+  return certificates.find((item) => item.slug === slug);
+}
+
 export function getShowcaseCategories(): string[] {
   return ["All", ...Array.from(new Set(landingProjects.map((item) => item.category)))];
 }

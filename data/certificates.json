@@ -1,47 +1,71 @@
 [
   {
-    "id": "claude-code",
-    "title": "Building with Claude",
+    "id": "claude-code-101",
+    "slug": "claude-code-101",
+    "title": "Claude Code 101",
     "issuer": "Anthropic",
-    "date": "2026",
-    "credentialUrl": "#",
-    "icon": "sparkles",
-    "color": "primary"
+    "date": "2026-04-24",
+    "certificateNumber": "wmhrfygd6fiq",
+    "verifyUrl": "https://verify.skilljar.com/c/wmhrfygd6fiq",
+    "image": "/certificates/claude-code-101.png",
+    "icon": "terminal",
+    "color": "accent",
+    "summary": "A hands-on introduction to Claude Code — Anthropic's agentic coding CLI — covering its core tool loop, safe permission model, and how to direct it effectively on real codebases.",
+    "description": "This foundational course walks through how Claude Code actually works under the hood: the agentic loop of reading files, planning a change, editing code, running shell commands, and verifying the result before reporting back. It covers the core tool set (Read, Edit, Write, Bash, Grep, Glob), the permission model that gates risky actions behind confirmation, and how to scope a prompt so the agent solves the right problem instead of guessing at one.",
+    "whatILearned": [
+      "How Claude Code's agentic loop works: reading files, planning edits, running shell commands, and verifying results before reporting back",
+      "The core toolset (Read, Edit, Write, Bash, Grep, Glob) and when to reach for each one instead of a generic shell command",
+      "How the permission system balances autonomy with safety — auto-approved reads vs. confirmation-gated writes and destructive commands",
+      "Writing a CLAUDE.md / AGENTS.md file to give a project persistent context: conventions, docs to check first, anything that breaks default assumptions",
+      "Breaking a vague request into a concrete, verifiable plan before any code gets touched",
+      "Reviewing the diffs and commit messages Claude Code produces the way I'd review a teammate's PR, not rubber-stamping them"
+    ],
+    "realWorldApplication": [
+      "This portfolio's own AGENTS.md file is the first thing Claude Code reads before touching the repo — it flags that this Next.js setup has framework-level differences from training data and points to the bundled docs to check first",
+      "Day-to-day I use it for the small, time-consuming stuff: fixing a scroll-jank bug, wiring up a new npm package, cleaning up an unused import — places where a fast, correct first pass matters more than deep architecture",
+      "I use the permission prompts deliberately rather than blanket-approving everything: file edits and local build/lint commands run freely, while git pushes and destructive resets stay gated behind an explicit yes"
+    ],
+    "skills": [
+      "Claude Code CLI",
+      "Agentic workflows",
+      "CLAUDE.md / AGENTS.md configuration",
+      "Permission & safety model",
+      "Prompt scoping"
+    ]
   },
   {
-    "id": "google-ai",
-    "title": "Google AI Essentials",
-    "issuer": "Google",
-    "date": "2025",
-    "credentialUrl": "#",
-    "icon": "brain-circuit",
-    "color": "secondary"
-  },
-  {
-    "id": "meta-frontend",
-    "title": "Meta Front-End Developer",
-    "issuer": "Meta",
-    "date": "2024",
-    "credentialUrl": "#",
-    "icon": "layout-panel-left",
-    "color": "accent"
-  },
-  {
-    "id": "advanced-react",
-    "title": "Advanced React Patterns",
-    "issuer": "Frontend Masters",
-    "date": "2024",
-    "credentialUrl": "#",
-    "icon": "atom",
-    "color": "primary"
-  },
-  {
-    "id": "aws-cloud-practitioner",
-    "title": "AWS Certified Cloud Practitioner",
-    "issuer": "Amazon Web Services",
-    "date": "2023",
-    "credentialUrl": "#",
-    "icon": "cloud",
-    "color": "secondary"
+    "id": "claude-code-in-action",
+    "slug": "claude-code-in-action",
+    "title": "Claude Code in Action",
+    "issuer": "Anthropic",
+    "date": "2026-04-09",
+    "certificateNumber": "wpwe642u99mi",
+    "verifyUrl": "https://verify.skilljar.com/c/wpwe642u99mi",
+    "image": "/certificates/claude-code-in-action.png",
+    "icon": "terminal",
+    "color": "primary",
+    "summary": "An applied, project-based course on running Claude Code across real engineering workflows — multi-file changes, subagents, custom tooling, and verifying work end-to-end instead of trusting the first diff.",
+    "description": "Where the 101 course covers the mechanics, this one is about using Claude Code on work that looks like an actual job: refactors that touch a codebase it hasn't seen before, delegating research to subagents without derailing the main conversation, building repeatable custom commands, and — the part I lean on most — treating 'the diff looks right' as a hypothesis to verify, not a conclusion.",
+    "whatILearned": [
+      "Directing multi-file refactors and tracing bugs across an unfamiliar codebase without losing control of the change's scope",
+      "Using subagents to parallelize research (e.g. \"where is X used across the repo\") without polluting the main conversation's context window",
+      "Building and reusing custom slash commands / skills for workflows I run often, instead of re-explaining them every session",
+      "Automating verification — actually running the dev server, hitting the changed route, or screenshotting the UI — instead of trusting a diff that merely looks plausible",
+      "Diagnosing issues empirically: instrumenting the running app (headless browser, computed styles, network requests) rather than guessing from source alone",
+      "Working with MCP-connected tools and external services safely, with a clear sense of what data crosses that boundary"
+    ],
+    "realWorldApplication": [
+      "On this portfolio, I used exactly this workflow to track down a bug where an animated \"tech orbit\" UI was rendering empty: instead of guessing, I drove a headless Chromium instance, inspected computed styles live, and found the real cause — a Tailwind CSS tree-shaking edge case compounded by a prefers-reduced-motion accessibility rule collapsing the animation",
+      "I now default to \"verify, don't assume\" for UI changes — spinning up the dev server and checking the actual rendered page (light/dark theme, mobile width, console errors) before calling anything done, rather than trusting that the code reads correctly",
+      "For generated assets like favicons and OG images, I have Claude Code reuse the project's own next/og pipeline instead of hand-rolling image generation, so output stays consistent with how the rest of the site already builds images"
+    ],
+    "skills": [
+      "Multi-file refactors",
+      "Subagents & delegation",
+      "Custom skills / slash commands",
+      "End-to-end UI verification",
+      "Headless browser debugging",
+      "MCP integrations"
+    ]
   }
 ]

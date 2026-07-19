@@ -31,6 +31,7 @@ import {
   Database,
   GitBranch,
   Wrench,
+  Terminal,
   type LucideIcon,
 } from "lucide-react";
 
@@ -69,6 +70,7 @@ const registry: Record<string, LucideIcon> = {
   database: Database,
   "git-branch": GitBranch,
   wrench: Wrench,
+  terminal: Terminal,
 };
 
 export function Icon({

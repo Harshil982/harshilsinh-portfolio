@@ -62,6 +62,7 @@
       "skills": [
         { "name": "JIRA", "icon": "jira", "level": 85, "years": 3 },
         { "name": "Azure DevOps", "icon": "azure", "level": 75, "years": 1 },
+        { "name": "AWS (Lambda, S3)", "icon": "cloud", "level": 65, "years": 1 },
         { "name": "Figma", "icon": "figma", "level": 70, "years": 2 }
       ]
     }

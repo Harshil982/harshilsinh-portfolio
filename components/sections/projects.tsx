@@ -1,58 +1,35 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import { SectionHeading } from "@/components/layout/section-heading";
-import { RevealGroup, RevealItem } from "@/components/animations/reveal";
 import { ProjectCard } from "@/components/cards/project-card";
-import { projects, projectFilters } from "@/lib/data";
-import { cn } from "@/lib/utils";
+import { Carousel } from "@/components/ui/carousel";
+import { projects } from "@/lib/data";
 
 export function Projects() {
-  const [filter, setFilter] = useState("All");
-
-  const filtered = useMemo(() => {
-    if (filter === "All") return projects;
-    return projects.filter(
-      (project) =>
-        project.category === filter || project.technologies.includes(filter)
-    );
-  }, [filter]);
-
   return (
     <section id="projects" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Featured Projects"
           title="Enterprise applications, built end-to-end"
-          description="Two production platforms I owned frontend modules for, from component architecture through testing."
+          description="Production platforms I owned frontend modules for, from component architecture through testing."
         />
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
+          These are enterprise projects built for companies I&apos;ve worked
+          with, so I&apos;m not able to share source code or a live demo here
+          — happy to walk through the code and architecture in person.
+        </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {projectFilters.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => setFilter(item)}
-              className={cn(
-                "rounded-full border border-border px-4 py-2 text-sm font-medium transition-all",
-                filter === item
-                  ? "border-transparent bg-gradient-brand text-primary-foreground shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-              aria-pressed={filter === item}
-            >
-              {item}
-            </button>
-          ))}
+        <div className="mt-16">
+          <Carousel label="projects" trackClassName="-ml-8" autoScroll>
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="min-w-0 flex-[0_0_100%] pl-8 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]"
+              >
+                <ProjectCard project={project} />
+              </div>
+            ))}
+          </Carousel>
         </div>
-
-        <RevealGroup className="mt-12 grid gap-8 lg:grid-cols-2" stagger={0.1}>
-          {filtered.map((project) => (
-            <RevealItem key={project.id}>
-              <ProjectCard project={project} />
-            </RevealItem>
-          ))}
-        </RevealGroup>
       </div>
     </section>
   );

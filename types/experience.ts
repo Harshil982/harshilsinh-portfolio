@@ -52,12 +52,20 @@ export interface ProcessStep {
 
 export interface Certificate {
   id: string;
+  slug: string;
   title: string;
   issuer: string;
   date: string;
-  credentialUrl: string;
+  certificateNumber?: string;
+  verifyUrl?: string;
+  image: string;
   icon: string;
   color: string;
+  summary: string;
+  description: string;
+  whatILearned: string[];
+  realWorldApplication: string[];
+  skills: string[];
 }
 
 export interface Achievement {

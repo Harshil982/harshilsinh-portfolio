@@ -9,7 +9,7 @@ import { Process } from "@/components/sections/process";
 import { Timeline } from "@/components/sections/timeline";
 import { Certificates } from "@/components/sections/certificates";
 import { Achievements } from "@/components/sections/achievements";
-import { Testimonials } from "@/components/sections/testimonials";
+// import { Testimonials } from "@/components/sections/testimonials";
 import { BlogPreview } from "@/components/sections/blog-preview";
 import { Faq } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
@@ -28,7 +28,7 @@ export default function Home() {
       <Timeline />
       <Certificates />
       <Achievements />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <BlogPreview />
       <Faq />
       <Contact />

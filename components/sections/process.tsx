@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/layout/section-heading";
@@ -17,7 +17,7 @@ export function Process() {
   const trackRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (reducedMotion) return;
     const section = sectionRef.current;
     const track = trackRef.current;
@@ -41,6 +41,12 @@ export function Process() {
       });
     }, section);
 
+    // useLayoutEffect (not useEffect) is required here: its cleanup runs
+    // synchronously as part of the same commit as an unmounting parent,
+    // so ScrollTrigger's pin-spacer is fully reverted before React tries
+    // to remove this section's DOM node. With useEffect's async passive
+    // cleanup, React can attempt that removal while the node is still
+    // reparented inside the pin-spacer, throwing a removeChild NotFoundError.
     return () => ctx.revert();
   }, [reducedMotion]);
 

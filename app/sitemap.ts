@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { blogPosts, landingProjects, projects, seo } from "@/lib/data";
+import { blogPosts, certificates, landingProjects, projects, seo } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/blog"].map((path) => ({
@@ -22,5 +22,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...showcaseRoutes, ...blogRoutes];
+  const certificateRoutes = certificates.map((certificate) => ({
+    url: `${seo.siteUrl}/certificates/${certificate.slug}`,
+    lastModified: new Date(certificate.date),
+  }));
+
+  return [
+    ...staticRoutes,
+    ...projectRoutes,
+    ...showcaseRoutes,
+    ...blogRoutes,
+    ...certificateRoutes,
+  ];
 }

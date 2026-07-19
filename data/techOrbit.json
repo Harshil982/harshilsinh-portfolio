@@ -1,12 +1,15 @@
 {
-  "center": { "name": "React", "icon": "react" },
+  "center": [
+    { "name": "React", "icon": "react" },
+    { "name": "Next.js", "icon": "nextjs" }
+  ],
   "rings": [
     {
       "radius": 110,
       "duration": 18,
       "items": [
-        { "name": "Next.js", "icon": "nextjs" },
         { "name": "TypeScript", "icon": "typescript" },
+        { "name": "JavaScript", "icon": "javascript" },
         { "name": "Tailwind CSS", "icon": "tailwind" }
       ]
     },

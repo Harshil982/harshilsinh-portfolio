@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { GradientMeshArt } from "@/components/animations/gradient-mesh-art";
 import { Reveal } from "@/components/animations/reveal";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { buildMetadata } from "@/lib/metadata";
 import { getProjectBySlug, projects } from "@/lib/data";
 
@@ -195,21 +194,13 @@ export default async function ProjectPage({
               </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <Button asChild>
-                <a href={project.live} target="_blank" rel="noopener noreferrer">
-                  Live Preview <ArrowUpRight className="size-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Code2 className="size-4" /> View Source
-                </a>
-              </Button>
+            <div className="glass rounded-xl p-6">
+              <p className="text-sm text-muted-foreground">
+                This is an enterprise project built for a company I&apos;ve
+                worked with, so I&apos;m not able to share source code or a
+                live demo here — happy to walk through the code and
+                architecture in person.
+              </p>
             </div>
           </Reveal>
         </div>
