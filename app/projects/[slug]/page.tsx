@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { GradientMeshArt } from "@/components/animations/gradient-mesh-art";
 import { Reveal } from "@/components/animations/reveal";
 import { Badge } from "@/components/ui/badge";
 import { buildMetadata } from "@/lib/metadata";
@@ -60,14 +59,6 @@ export default async function ProjectPage({
           <p className="mt-2 text-lg text-primary">{project.tagline}</p>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <GradientMeshArt
-            seed={project.gradientSeed}
-            chrome
-            className="mt-10 h-72 w-full rounded-2xl sm:h-96"
-          />
-        </Reveal>
-
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div className="flex flex-col gap-10">
             <Reveal>
@@ -121,26 +112,6 @@ export default async function ProjectPage({
                     </p>
                     <p className="mt-2 text-sm text-muted-foreground">
                       {item.solution}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <h2 className="font-display text-xl font-semibold">
-                Screenshots
-              </h2>
-              <div className="mt-3 grid gap-4 sm:grid-cols-3">
-                {project.screenshots.map((screenshot, index) => (
-                  <div key={screenshot.caption} className="flex flex-col gap-2">
-                    <GradientMeshArt
-                      seed={`${project.gradientSeed}-${index}`}
-                      chrome
-                      className="h-32 rounded-xl"
-                    />
-                    <p className="text-xs text-muted-foreground">
-                      {screenshot.caption}
                     </p>
                   </div>
                 ))}

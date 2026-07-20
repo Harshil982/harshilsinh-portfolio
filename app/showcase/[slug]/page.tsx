@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Code2, Smartphone, Sparkles } from "lucide-react";
@@ -57,13 +58,46 @@ export default async function ShowcasePage({
           </p>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <GradientMeshArt
-            seed={project.gradientSeed}
-            chrome
-            className="mt-10 h-72 w-full rounded-2xl sm:h-96"
-          />
-        </Reveal>
+        {project.images && project.images.length > 0 ? (
+          <Reveal delay={0.1}>
+            <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-2xl shadow-xl">
+              <Image
+                src={project.images[0]}
+                alt={`${project.title} screenshot`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 896px, 100vw"
+                className="object-cover object-top"
+              />
+            </div>
+            {project.images.length > 1 && (
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {project.images.slice(1).map((image) => (
+                  <div
+                    key={image}
+                    className="relative aspect-video overflow-hidden rounded-xl shadow-md"
+                  >
+                    <Image
+                      src={image}
+                      alt={`${project.title} screenshot`}
+                      fill
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </Reveal>
+        ) : (
+          <Reveal delay={0.1}>
+            <GradientMeshArt
+              seed={project.gradientSeed}
+              chrome
+              className="mt-10 h-72 w-full rounded-2xl sm:h-96"
+            />
+          </Reveal>
+        )}
 
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           <div className="glass rounded-xl p-5">
@@ -108,11 +142,13 @@ export default async function ShowcasePage({
               {project.cta} <ArrowUpRight className="size-4" />
             </a>
           </Button>
-          <Button asChild variant="outline">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Code2 className="size-4" /> View Source
-            </a>
-          </Button>
+          {project.github && (
+            <Button asChild variant="outline">
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Code2 className="size-4" /> View Source
+              </a>
+            </Button>
+          )}
         </div>
       </div>
     </article>

@@ -53,4 +53,5 @@ export interface LandingProject {
   github: string;
   color: string;
   gradientSeed: string;
+  images?: string[];
 }

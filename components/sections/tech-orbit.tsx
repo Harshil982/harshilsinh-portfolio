@@ -27,7 +27,7 @@ export function TechOrbit() {
 
         <Reveal className="mt-16">
           <div
-            className="relative mx-auto flex aspect-square w-full max-w-xl items-center justify-center overflow-hidden [--orbit-scale:0.36] sm:[--orbit-scale:0.5] md:[--orbit-scale:0.68] lg:[--orbit-scale:1]"
+            className="relative mx-auto flex aspect-square w-full max-w-xl items-center justify-center overflow-hidden [--orbit-scale:0.42] sm:[--orbit-scale:0.5] md:[--orbit-scale:0.68] lg:[--orbit-scale:1]"
             aria-hidden="true"
           >
             {techOrbit.rings.map((ring) => (
@@ -47,10 +47,10 @@ export function TechOrbit() {
                 <div
                   key={item.name}
                   title={item.name}
-                  className="glass relative z-0 flex size-11 items-center justify-center rounded-full shadow-xl first:-mr-4 sm:size-14 sm:first:-mr-5 lg:size-16 lg:first:-mr-6"
+                  className="glass relative z-0 flex size-9 items-center justify-center rounded-full shadow-xl first:-mr-3 sm:size-11 sm:first:-mr-4 md:size-14 md:first:-mr-5 lg:size-16 lg:first:-mr-6"
                   style={{ zIndex: index }}
                 >
-                  <TechIcon name={item.icon} className="size-5 sm:size-6 lg:size-7" />
+                  <TechIcon name={item.icon} className="size-4 sm:size-5 md:size-6 lg:size-7" />
                 </div>
               ))}
             </div>
@@ -88,10 +88,13 @@ export function TechOrbit() {
                     style={style}
                   >
                     <div
-                      className="glass flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-md transition-transform duration-300 hover:z-20 hover:scale-125 sm:size-12"
+                      className="glass flex size-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-md transition-transform duration-300 hover:z-20 hover:scale-125 sm:size-9 md:size-10 lg:size-12"
                       title={item.name}
                     >
-                      <TechIcon name={item.icon} className="size-5" />
+                      <TechIcon
+                        name={item.icon}
+                        className="size-3.5 sm:size-4 md:size-4.5 lg:size-5"
+                      />
                     </div>
                   </div>
                 );
