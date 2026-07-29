@@ -21,28 +21,28 @@
     "id": "charge-point-shipped",
     "date": "2023",
     "title": "Shipped Charge Point Operator",
-    "subtitle": "Project",
+    "subtitle": "Project · Tatvasoft",
     "description": "Delivered station management, user access, and invoicing modules for an EV charging network console, with Jest/RTL coverage on core flows.",
     "type": "project",
     "icon": "zap"
   },
   {
-    "id": "coworkspace-shipped",
+    "id": "smart-city-shipped",
     "date": "2024",
-    "title": "Shipped Co-Workspace Management",
-    "subtitle": "Project",
-    "description": "Built operator and member portals for a multi-location co-working platform, introducing Zustand for booking/resource state.",
+    "title": "Shipped Smart City",
+    "subtitle": "Project · Tatvasoft",
+    "description": "Modernized a legacy IoT platform for infrastructure operators — migrated class components to hooks, upgraded to current Node.js LTS, and built out the rule engine, device management, and analytics modules.",
     "type": "project",
-    "icon": "building-2"
+    "icon": "cloud"
   },
   {
-    "id": "react-cert",
-    "date": "2024",
-    "title": "Advanced React Patterns Certificate",
-    "subtitle": "Certificate",
-    "description": "Completed a certification deepening component architecture, performance, and state-management patterns in React.",
-    "type": "certificate",
-    "icon": "award"
+    "id": "sims-shipped",
+    "date": "2025",
+    "title": "Shipped SIMS",
+    "subtitle": "Project · Tatvasoft",
+    "description": "Built a multi-tenant inventory management system with role-scoped access across four roles, configurable low-stock alerts, and full purchase/sales order CRUD.",
+    "type": "project",
+    "icon": "database"
   },
   {
     "id": "tatvasoft-end",
@@ -61,6 +61,24 @@
     "description": "Started as a Software Engineer building enterprise web applications with React, Next.js, Zustand, and Azure DevOps-driven delivery.",
     "type": "job",
     "icon": "briefcase"
+  },
+  {
+    "id": "afterwords-shipped",
+    "date": "2026",
+    "title": "Shipped Afterwords",
+    "subtitle": "Project · Vivansh Infotech",
+    "description": "Delivered a confidential legacy-messaging platform — built the notifier-quorum confirmation flow and reworked video uploads around S3 multipart chunking, cutting a 1.8GB upload from 12–15 minutes down to under two.",
+    "type": "project",
+    "icon": "mail"
+  },
+  {
+    "id": "coworkspace-current",
+    "date": "Present",
+    "title": "Building Co-Workspace Management",
+    "subtitle": "Project · Vivansh Infotech",
+    "description": "Currently building operator and member portals for a multi-location co-working platform, using Next.js, Zustand, and Tailwind CSS for booking and resource-management flows.",
+    "type": "project",
+    "icon": "building-2"
   },
   {
     "id": "current-goal",

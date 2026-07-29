@@ -20,6 +20,17 @@ export function buildMetadata({
     title: resolvedTitle,
     description: resolvedDescription,
     alternates: { canonical: url },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
     openGraph: {
       title: resolvedTitle,
       description: resolvedDescription,

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
@@ -9,6 +9,7 @@ import { ScrollProgressBar } from "@/components/layout/scroll-progress-bar";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { CursorFollower } from "@/components/animations/cursor-follower";
 import { NoiseOverlay } from "@/components/animations/noise-overlay";
+import { ServiceWorkerRegister } from "@/components/layout/service-worker-register";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { buildMetadata } from "@/lib/metadata";
@@ -34,8 +35,24 @@ export const metadata: Metadata = {
   metadataBase: new URL(seo.siteUrl),
   authors: [{ name: personal.name }],
   creator: personal.name,
+  publisher: personal.name,
   keywords: seo.keywords,
-  icons: { icon: "/favicon.ico" },
+  appleWebApp: {
+    capable: true,
+    title: personal.firstName,
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fcfcfe" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b10" },
+  ],
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({
@@ -95,6 +112,7 @@ export default function RootLayout({
             </TooltipProvider>
           </SmoothScrollProvider>
         </ThemeProvider>
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
