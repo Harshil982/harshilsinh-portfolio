@@ -4,6 +4,8 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/animations/reveal"
 import { MonogramAvatar } from "@/components/animations/gradient-mesh-art";
 import { StatCard } from "@/components/cards/stat-card";
 import { personal, stats } from "@/lib/data";
+import { SHOW_PERSONAL_AVATAR } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
 export function About() {
   return (
@@ -15,16 +17,26 @@ export function About() {
           description={personal.summary}
         />
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <Reveal className="relative mx-auto aspect-[4/5] w-full max-w-sm">
-            <MonogramAvatar
-              seed={`${personal.avatarSeed}-about`}
-              initials={personal.initials}
-              className="size-full rounded-3xl border border-border text-8xl"
-            />
-          </Reveal>
+        <div
+          className={cn(
+            "mt-16 grid gap-12 lg:items-center",
+            SHOW_PERSONAL_AVATAR && "lg:grid-cols-[0.8fr_1.2fr]"
+          )}
+        >
+          {SHOW_PERSONAL_AVATAR && (
+            <Reveal className="relative mx-auto aspect-[4/5] w-full max-w-sm">
+              <MonogramAvatar
+                seed={`${personal.avatarSeed}-about`}
+                initials={personal.initials}
+                className="size-full rounded-3xl border border-border text-8xl"
+              />
+            </Reveal>
+          )}
 
-          <RevealGroup className="grid gap-4 sm:grid-cols-2" stagger={0.08}>
+          <RevealGroup
+            className={cn("grid gap-4 sm:grid-cols-2", !SHOW_PERSONAL_AVATAR && "lg:grid-cols-4")}
+            stagger={0.08}
+          >
             {personal.philosophy.map((point) => (
               <RevealItem
                 key={point}

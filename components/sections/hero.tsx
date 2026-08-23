@@ -10,6 +10,7 @@ import { MagneticButton } from "@/components/animations/magnetic-button";
 import { MonogramAvatar } from "@/components/animations/gradient-mesh-art";
 import { Button } from "@/components/ui/button";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { SHOW_PERSONAL_AVATAR } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
@@ -47,7 +48,12 @@ export function Hero() {
         count={30}
       />
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+      <div
+        className={cn(
+          "mx-auto grid w-full grid-cols-1 items-center gap-16 px-6 lg:px-8",
+          SHOW_PERSONAL_AVATAR ? "max-w-7xl lg:grid-cols-[1.1fr_0.9fr]" : "max-w-3xl"
+        )}
+      >
         <motion.div
           initial="hidden"
           animate="visible"
@@ -139,29 +145,31 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          style={{ x: springX, y: springY }}
-          className="relative mx-auto aspect-square w-full max-w-md"
-        >
-          <div className="animate-float absolute inset-0 rounded-full bg-gradient-brand opacity-20 blur-3xl" />
-          <MonogramAvatar
-            seed={personal.avatarSeed}
-            initials={personal.initials}
-            className="relative size-full rounded-full border border-border text-7xl shadow-2xl"
-          />
-          <FloatingCodeSnippet
-            className="absolute -left-6 top-10 hidden lg:block"
-            label="const dev = 'Harshilsinh';"
-          />
-          <FloatingCodeSnippet
-            className="absolute -right-4 bottom-16 hidden lg:block"
-            label="<Portfolio stack='Next.js' />"
-            delay={1.2}
-          />
-        </motion.div>
+        {SHOW_PERSONAL_AVATAR && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ x: springX, y: springY }}
+            className="relative mx-auto aspect-square w-full max-w-md"
+          >
+            <div className="animate-float absolute inset-0 rounded-full bg-gradient-brand opacity-20 blur-3xl" />
+            <MonogramAvatar
+              seed={personal.avatarSeed}
+              initials={personal.initials}
+              className="relative size-full rounded-full border border-border text-7xl shadow-2xl"
+            />
+            <FloatingCodeSnippet
+              className="absolute -left-6 top-10 hidden lg:block"
+              label="const dev = 'Harshilsinh';"
+            />
+            <FloatingCodeSnippet
+              className="absolute -right-4 bottom-16 hidden lg:block"
+              label="<Portfolio stack='Next.js' />"
+              delay={1.2}
+            />
+          </motion.div>
+        )}
       </div>
     </section>
   );
