@@ -10,6 +10,7 @@ import { BackToTop } from "@/components/layout/back-to-top";
 import { CursorFollower } from "@/components/animations/cursor-follower";
 import { NoiseOverlay } from "@/components/animations/noise-overlay";
 import { ServiceWorkerRegister } from "@/components/layout/service-worker-register";
+import { ChatbotWidget } from "@/components/chatbot/chatbot-widget";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { buildMetadata } from "@/lib/metadata";
@@ -108,6 +109,7 @@ export default function RootLayout({
               <main id="main-content">{children}</main>
               <Footer />
               <BackToTop />
+              <ChatbotWidget />
               <Toaster position="bottom-right" />
             </TooltipProvider>
           </SmoothScrollProvider>
