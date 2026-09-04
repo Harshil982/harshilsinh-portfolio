@@ -40,7 +40,10 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
   }, [messages, isLoading]);
 
   useEffect(() => {
-    inputRef.current?.focus();
+    // The panel is fixed-position and already fully in view — skip the
+    // browser's default "scroll element into view" behavior, which some
+    // browsers still trigger on focus even for already-visible elements.
+    inputRef.current?.focus({ preventScroll: true });
   }, []);
 
   async function sendMessage(text: string) {
@@ -110,7 +113,11 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
         </button>
       </header>
 
-      <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+      <div
+        ref={scrollRef}
+        data-lenis-prevent
+        className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-4"
+      >
         {messages.map((message, index) => (
           <div
             key={index}
