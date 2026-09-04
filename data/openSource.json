@@ -1,0 +1,130 @@
+[
+  {
+    "id": "treekit",
+    "slug": "treekit",
+    "name": "TreeKit",
+    "tagline": "Open-source React tree/checkbox-tree component library",
+    "category": "React Component Library",
+    "status": "Published",
+    "npmPackage": "@treekit-ui/core",
+    "overview": "A TypeScript-first React component library for rendering hierarchical/tree data with first-class checkbox selection — the kind of UI used for file explorers, permission trees, category pickers, and nested multi-select forms.",
+    "problem": "Most tree-view packages on npm hand you a bare hierarchy renderer and leave selection logic, keyboard navigation, and styling entirely up to you. TreeKit treats cascading checkbox selection, correct tri-state (indeterminate) behavior, keyboard accessibility, and a polished default appearance as core requirements, not optional extras — so it works out of the box instead of being a starting point for weeks of custom work.",
+    "keyFeatures": [
+      "Cascading checkbox selection with real indeterminate state — actual native <input type=\"checkbox\"> elements using the DOM's indeterminate property, not a styled div faking it",
+      "Configurable propagation: checking a parent can cascade to children, checking children can bubble up to parents, both, or neither",
+      "Controlled or uncontrolled API for expansion, checked state, and selection — React-idiomatic, your choice per use case",
+      "Full WAI-ARIA tree semantics — roving tabindex, complete keyboard navigation, verified with automated jest-axe accessibility tests",
+      "Search/filtering, async/lazy-loaded children, disabled nodes, and fully custom row rendering via renderNode",
+      "Virtualized rendering for large trees — smoothly handles thousands of nodes",
+      "A CSS custom-property theming system with 5 built-in variants and dark mode support, instead of a stylesheet you have to fight",
+      "A headless useTree hook exposing the same pure tree-math engine the component uses internally, for anyone who needs a fully custom UI on the same logic"
+    ],
+    "howItsBuilt": [
+      "TypeScript with no `any` in the public API; ships its own type declarations",
+      "Architecturally separates \"tree math\" from rendering — cascading selection, indeterminate computation, and visible-node flattening are pure, independently unit-tested functions, with the React layer as a thin consumer",
+      "Zero runtime dependencies beyond React itself (18+, including React 19) — no bundled icon library, no CSS-in-JS",
+      "~7.3KB gzipped",
+      "MIT licensed",
+      "CI via GitHub Actions — typecheck, lint, test, and build on every push"
+    ],
+    "docsHighlights": [
+      "Live interactive playground",
+      "Real working examples: file explorer, permissions tree, async loading, virtualized large datasets, and a search + select + submit flow",
+      "Global search across the documentation",
+      "An AI-powered documentation assistant, Gemini-backed and retrieval-grounded against a curated knowledge base so it never invents unsupported features",
+      "SEO-optimized: structured data, per-page canonical/OG metadata, a sitemap, and an llms.txt for AI crawlers"
+    ],
+    "technologies": ["TypeScript", "React"],
+    "docsStack": ["Next.js 15", "Tailwind CSS", "Vercel"],
+    "license": "MIT",
+    "bundleSize": "~7.3KB gzipped",
+    "npmUrl": "https://www.npmjs.com/package/@treekit-ui/core",
+    "githubUrl": "https://github.com/Harshil982/treekit",
+    "docsUrl": "https://treekit.harshilsinh.dev",
+    "docsRepoUrl": "https://github.com/Harshil982/treekit-docs",
+    "color": "primary",
+    "gradientSeed": "treekit"
+  },
+  {
+    "id": "universal-api-errors",
+    "slug": "universal-api-errors",
+    "name": "universal-api-errors",
+    "tagline": "One consistent, fully-typed error object — no matter which HTTP client or backend framework sent it",
+    "category": "TypeScript Library Ecosystem",
+    "status": "Published",
+    "npmPackage": "@harshilrajput/universal-api-errors",
+    "overview": "An open-source TypeScript library that normalizes API errors from any HTTP client — Axios, fetch, and more — into one consistent, fully-typed error object. Published as 5 npm packages with a live docs site and interactive playground.",
+    "problem": "Every frontend/backend project ends up re-implementing the same brittle error-parsing logic — scattered `if (error.response?.status === 401)` checks that break the moment a different backend spells \"unauthorized\" differently. Every backend framework shapes its errors differently:",
+    "problemExamples": [
+      {
+        "label": "Laravel",
+        "code": "{ \"message\": \"Invalid Password\" }"
+      },
+      {
+        "label": "NestJS",
+        "code": "{ \"statusCode\": 401, \"message\": \"Token Expired\", \"error\": \"Unauthorized\" }"
+      },
+      {
+        "label": "FastAPI",
+        "code": "{ \"detail\": [{ \"loc\": [\"body\", \"email\"], \"msg\": \"field required\" }] }"
+      }
+    ],
+    "codeExampleIntro": "universal-api-errors normalizes all of these — from Axios, fetch, or virtually any error shape — into one predictable UniversalError:",
+    "codeExample": "import { parseAxiosError } from '@harshilrajput/universal-api-errors-axios';\n\ntry {\n  await axios.get('/api/user');\n} catch (err) {\n  const error = parseAxiosError(err);\n  error.message;        // \"Token Expired\"\n  error.status;         // 401\n  error.type;            // \"Unauthorized\"\n  error.isUnauthorized;  // true\n  error.retryable;       // false\n  error.validation;      // { email: [\"Already exists\"] } — normalized field errors\n}",
+    "keyFeatures": [
+      "Zero runtime dependencies in core — achieved via duck-typing rather than importing Axios/fetch types, so the core package works standalone with any HTTP client",
+      "Strict TypeScript — exactOptionalPropertyTypes, noUncheckedIndexedAccess, zero any",
+      "91 tests, CI-verified on Node 22 and 24 via GitHub Actions",
+      "Dual ESM/CJS builds with generated .d.ts via tsup",
+      "Unified error-classification logic — every adapter agrees on what counts as a network error by construction, not by convention",
+      "Published and real — live on npm under the @harshilrajput scope, MIT licensed, versioned with Changesets",
+      "A working, live playground — runs the actual published package in the browser against pasted JSON, not a mocked demo"
+    ],
+    "howItsBuilt": [
+      "A pnpm monorepo of 5 independently versioned, independently published npm packages",
+      "Core package recognizes error shapes via duck-typing — no imports of Axios/fetch types needed, so it works standalone with any HTTP client",
+      "Discovered and fixed a real ES-module `export *` collision that would have silently dropped exports",
+      "Fixed a build-tool bug where esbuild strips \"use client\" directives, via a post-build patch step",
+      "Dual ESM/CJS builds with generated .d.ts via tsup",
+      "91 tests, CI-verified on Node 22 and 24 via GitHub Actions",
+      "MIT licensed, versioned and released with Changesets"
+    ],
+    "packages": [
+      {
+        "name": "@harshilrajput/universal-api-errors-core",
+        "role": "Zero-runtime-dependency parser + the UniversalError model. Recognizes error shapes via duck-typing (no imports of Axios/etc. needed)."
+      },
+      {
+        "name": "@harshilrajput/universal-api-errors-axios",
+        "role": "Thin Axios-specific adapter"
+      },
+      {
+        "name": "@harshilrajput/universal-api-errors-fetch",
+        "role": "Thin fetch-specific adapter (async, since reading a Response body requires it)"
+      },
+      {
+        "name": "@harshilrajput/universal-api-errors-react-query",
+        "role": "useApiError() hook + createRetry() for TanStack React Query"
+      },
+      {
+        "name": "@harshilrajput/universal-api-errors",
+        "role": "Batteries-included bundle (core + Axios + fetch in one install)"
+      }
+    ],
+    "docsHighlights": [
+      "A live interactive playground that runs the actual published package in the browser against pasted JSON — not a mocked demo",
+      "Full documentation for all 5 packages and their APIs",
+      "Built with Fumadocs on Next.js 16"
+    ],
+    "technologies": ["TypeScript", "pnpm workspaces", "Changesets", "tsup", "Vitest", "GitHub Actions CI"],
+    "docsStack": ["Next.js 16", "Tailwind CSS v4", "Fumadocs"],
+    "license": "MIT",
+    "npmUrl": "https://www.npmjs.com/~harshilrajput",
+    "githubUrl": "https://github.com/Harshil982/universal-api-errors",
+    "websiteUrl": "https://universal-api-errors.harshilsinh.dev/",
+    "docsUrl": "https://universal-api-errors.harshilsinh.dev/docs",
+    "playgroundUrl": "https://universal-api-errors.harshilsinh.dev/playground",
+    "color": "accent",
+    "gradientSeed": "universal-api-errors"
+  }
+]

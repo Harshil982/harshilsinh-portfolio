@@ -4,6 +4,7 @@
     { "id": "experience", "label": "Experience", "href": "#experience" },
     { "id": "projects", "label": "Projects", "href": "#projects" },
     { "id": "showcase", "label": "Frontend Showcase", "href": "#showcase" },
+    { "id": "open-source", "label": "Open Source", "href": "#open-source" },
     { "id": "skills", "label": "Skills", "href": "#skills" },
     { "id": "timeline", "label": "Timeline", "href": "#timeline" },
     { "id": "certificates", "label": "Certificates", "href": "#certificates" },

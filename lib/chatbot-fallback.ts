@@ -3,6 +3,7 @@ import {
   experience,
   projects,
   landingProjects,
+  openSourceLibraries,
   certificates,
   achievements,
   faqs,
@@ -82,6 +83,19 @@ function buildChunks(): FallbackChunk[] {
     keywords: ["showcase", "demo", "demos", "live", "site", "sites", "freelance", "personal"],
     reply: `For real, publicly viewable work, check the Frontend Showcase — ${landingProjects.map((p) => `${p.title} (${p.demo})`).join(", ")}.`,
   });
+
+  for (const library of openSourceLibraries) {
+    chunks.push({
+      id: `open-source-${library.id}`,
+      keywords: [
+        "library", "libraries", "npm", "package", "packages", "opensource",
+        "open", "source", "publish", "published", "maintainer", "maintains",
+        ...tokenize(library.id),
+        ...tokenize(library.name),
+      ],
+      reply: `He builds and publishes open-source npm packages independently — ${library.name} (${library.npmPackage}) is ${library.tagline.toLowerCase()}. ${library.overview} It's MIT licensed${library.bundleSize ? `, ${library.bundleSize}` : ""}, with full docs at ${library.docsUrl}, source on GitHub at ${library.githubUrl}, and published on npm at ${library.npmUrl}.`,
+    });
+  }
 
   const afterwords = projects.find((p) => p.slug === "afterwords");
   if (afterwords) {

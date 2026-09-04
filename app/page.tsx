@@ -5,6 +5,7 @@ import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { FrontendShowcase } from "@/components/sections/frontend-showcase";
+import { OpenSource } from "@/components/sections/open-source";
 import { Process } from "@/components/sections/process";
 import { Timeline } from "@/components/sections/timeline";
 import { Certificates } from "@/components/sections/certificates";
@@ -24,6 +25,7 @@ export default function Home() {
       <Experience />
       <Projects />
       <FrontendShowcase />
+      <OpenSource />
       <Process />
       <Timeline />
       <Certificates />

@@ -38,6 +38,47 @@ export interface Project {
   gradientSeed: string;
 }
 
+export interface OpenSourcePackage {
+  name: string;
+  role: string;
+}
+
+export interface OpenSourceCodeExample {
+  label: string;
+  code: string;
+}
+
+export interface OpenSourceLibrary {
+  id: string;
+  slug: string;
+  name: string;
+  tagline: string;
+  category: string;
+  status: string;
+  npmPackage: string;
+  overview: string;
+  problem: string;
+  problemExamples?: OpenSourceCodeExample[];
+  codeExampleIntro?: string;
+  codeExample?: string;
+  keyFeatures: string[];
+  howItsBuilt: string[];
+  docsHighlights: string[];
+  technologies: string[];
+  docsStack: string[];
+  license: string;
+  bundleSize?: string;
+  packages?: OpenSourcePackage[];
+  npmUrl: string;
+  githubUrl: string;
+  websiteUrl?: string;
+  docsUrl: string;
+  docsRepoUrl?: string;
+  playgroundUrl?: string;
+  color: string;
+  gradientSeed: string;
+}
+
 export interface LandingProject {
   id: string;
   slug: string;

@@ -1,5 +1,12 @@
 import type { MetadataRoute } from "next";
-import { blogPosts, certificates, landingProjects, projects, seo } from "@/lib/data";
+import {
+  blogPosts,
+  certificates,
+  landingProjects,
+  openSourceLibraries,
+  projects,
+  seo,
+} from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/blog"].map((path) => ({
@@ -17,6 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
+  const openSourceRoutes = openSourceLibraries.map((library) => ({
+    url: `${seo.siteUrl}/open-source/${library.slug}`,
+    lastModified: new Date(),
+  }));
+
   const blogRoutes = blogPosts.map((post) => ({
     url: `${seo.siteUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
@@ -31,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...projectRoutes,
     ...showcaseRoutes,
+    ...openSourceRoutes,
     ...blogRoutes,
     ...certificateRoutes,
   ];

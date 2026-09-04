@@ -7,6 +7,7 @@ import skillsJson from "@/data/skills.json";
 import techOrbitJson from "@/data/techOrbit.json";
 import projectsJson from "@/data/projects.json";
 import landingProjectsJson from "@/data/landingProjects.json";
+import openSourceJson from "@/data/openSource.json";
 import projectFiltersJson from "@/data/projectFilters.json";
 import processJson from "@/data/process.json";
 import timelineJson from "@/data/timeline.json";
@@ -30,6 +31,7 @@ import type {
   TechOrbitData,
   Project,
   LandingProject,
+  OpenSourceLibrary,
   ProcessStep,
   TimelineItem,
   Certificate,
@@ -52,6 +54,7 @@ export const skills = skillsJson as SkillsData;
 export const techOrbit = techOrbitJson as TechOrbitData;
 export const projects = projectsJson as Project[];
 export const landingProjects = landingProjectsJson as LandingProject[];
+export const openSourceLibraries = openSourceJson as OpenSourceLibrary[];
 export const projectFilters = projectFiltersJson as string[];
 export const processSteps = processJson as ProcessStep[];
 export const timeline = timelineJson as TimelineItem[];
@@ -71,6 +74,10 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 export function getLandingProjectBySlug(slug: string): LandingProject | undefined {
   return landingProjects.find((item) => item.slug === slug);
+}
+
+export function getOpenSourceLibraryBySlug(slug: string): OpenSourceLibrary | undefined {
+  return openSourceLibraries.find((item) => item.slug === slug);
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
