@@ -5,7 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMediaQuery, useReducedMotion } from "@/hooks/use-media-query";
+import { useMounted } from "@/hooks/use-mounted";
 import { MASCOT_NAME } from "@/lib/chatbot-knowledge";
+import { RobotStage, ROBOT_STAGE_SIZE, useWebGLSupport } from "./robot-3d";
 
 const HINTS = [
   "Psst — I know everything about the Projects section. Want the tour?",
@@ -16,33 +18,10 @@ const HINTS = [
   "Want to see real deployed sites? Check the Frontend Showcase — or ask me about them.",
 ];
 
-const MASCOT_SIZE = 56;
-const MARGIN = 20;
-const ROAM_INTERVAL = 8000;
 const HINT_VISIBLE_MS = 5000;
-
-interface Bounds {
-  minX: number;
-  maxX: number;
-  minY: number;
-  maxY: number;
-}
-
-function getBounds(): Bounds {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  return {
-    minX: MARGIN,
-    maxX: Math.max(MARGIN, width - MASCOT_SIZE - MARGIN),
-    // Keep clear of the navbar up top and the back-to-top corner down low.
-    minY: 90,
-    maxY: Math.max(90, height - MASCOT_SIZE - 140),
-  };
-}
-
-function randomInRange(min: number, max: number) {
-  return min + Math.random() * (max - min);
-}
+const HINT_INTERVAL_MS = 14000;
+/** Diameter of the click target that follows the robot around. */
+const HIT_SIZE = 60;
 
 interface RobotMascotProps {
   isOpen: boolean;
@@ -51,43 +30,46 @@ interface RobotMascotProps {
 
 export function RobotMascot({ isOpen, onToggle }: RobotMascotProps) {
   const reducedMotion = useReducedMotion();
-  const isMobile = useMediaQuery("(max-width: 640px)");
-  const roams = !reducedMotion && !isMobile;
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+  const isCoarsePointer = useMediaQuery("(pointer: coarse)");
+  const mounted = useMounted();
+  const webglSupported = useWebGLSupport();
 
-  const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
-  const [anchorRight, setAnchorRight] = useState(false);
   const [hintIndex, setHintIndex] = useState(0);
   const [showHint, setShowHint] = useState(false);
+  const [greetSignal, setGreetSignal] = useState(0);
+  const [hit, setHit] = useState({ x: ROBOT_STAGE_SIZE.width / 2, y: 96 });
+  // Set only if the GPU takes the context back mid-session.
+  const [contextLost, setContextLost] = useState(false);
   const hintTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    if (!roams) return;
-
-    function moveToRandomSpot() {
-      const b = getBounds();
-      const x = randomInRange(b.minX, b.maxX);
-      setPosition({ x, y: randomInRange(b.minY, b.maxY) });
-      setAnchorRight(x > window.innerWidth / 2);
-    }
-
-    const bounds = getBounds();
-    const initialPlacement = setTimeout(() => {
-      setPosition({ x: bounds.maxX, y: bounds.maxY });
-      setAnchorRight(bounds.maxX > window.innerWidth / 2);
-    }, 0);
-    const moveInterval = setInterval(moveToRandomSpot, ROAM_INTERVAL);
-
-    return () => {
-      clearTimeout(initialPlacement);
-      clearInterval(moveInterval);
-    };
-  }, [roams]);
+  /*
+   * Who gets the 3D robot.
+   *
+   * three.js is ~160KB gzipped for what is, honestly, a mascot. That is a fine
+   * trade on a desktop that is going to sit on this page — and a bad one on a
+   * phone, where it costs battery and bandwidth to animate something 40px tall.
+   * Reduced motion opts out for the obvious reason. Everyone else keeps the
+   * flat icon, which was always the fallback and is no worse than before.
+   *
+   * `mounted` gates the whole thing so the server and the first client render
+   * agree: the media queries only have answers in the browser.
+   */
+  const use3D =
+    mounted &&
+    webglSupported &&
+    !contextLost &&
+    !reducedMotion &&
+    !isSmallScreen &&
+    !isCoarsePointer;
 
   const cycleHint = useCallback(() => {
     setHintIndex((prev) => (prev + 1) % HINTS.length);
     setShowHint(true);
     if (hintTimeoutRef.current) clearTimeout(hintTimeoutRef.current);
     hintTimeoutRef.current = setTimeout(() => setShowHint(false), HINT_VISIBLE_MS);
+    // A hint is Orbit talking, so Orbit waves while it talks.
+    setGreetSignal((n) => n + 1);
   }, []);
 
   useEffect(() => {
@@ -95,8 +77,8 @@ export function RobotMascot({ isOpen, onToggle }: RobotMascotProps) {
       const hideTimeout = setTimeout(() => setShowHint(false), 0);
       return () => clearTimeout(hideTimeout);
     }
-    const initialDelay = setTimeout(cycleHint, 3000);
-    const interval = setInterval(cycleHint, ROAM_INTERVAL + 4000);
+    const initialDelay = setTimeout(cycleHint, 6000);
+    const interval = setInterval(cycleHint, HINT_INTERVAL_MS);
     return () => {
       clearTimeout(initialDelay);
       clearInterval(interval);
@@ -109,26 +91,29 @@ export function RobotMascot({ isOpen, onToggle }: RobotMascotProps) {
     };
   }, []);
 
+  // The GPU can take the context back at any time; drop to the flat mascot.
+  const handleUnavailable = useCallback(() => setContextLost(true), []);
+
+  const handleHitAreaMove = useCallback((position: { x: number; y: number }) => {
+    setHit((prev) =>
+      // Only re-render when it has actually moved a pixel, rather than on
+      // every one of sixty frames a second.
+      Math.abs(prev.x - position.x) < 1 && Math.abs(prev.y - position.y) < 1
+        ? prev
+        : position
+    );
+  }, []);
+
   if (isOpen) return null;
 
-  const wrapperClassName = roams
-    ? "fixed z-40"
-    : "fixed bottom-6 left-6 z-40";
-
-  const wrapperStyle = roams && position ? { left: position.x, top: position.y } : undefined;
-
-  const wrapperTransition = roams
-    ? { type: "spring" as const, stiffness: 40, damping: 14 }
-    : { duration: 0.2 };
+  const label = `Chat with ${MASCOT_NAME}, the site's AI mascot`;
 
   return (
-    <motion.div
-      className={wrapperClassName}
-      style={wrapperStyle}
-      animate={roams && position ? { left: position.x, top: position.y } : undefined}
-      transition={wrapperTransition}
-    >
-      <div className="relative flex flex-col items-center">
+    <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-6 z-40">
+      <div
+        className="relative flex flex-col items-end"
+        style={use3D ? ROBOT_STAGE_SIZE : undefined}
+      >
         <AnimatePresence>
           {showHint && (
             <motion.div
@@ -136,47 +121,60 @@ export function RobotMascot({ isOpen, onToggle }: RobotMascotProps) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: reducedMotion ? 0 : 8, scale: reducedMotion ? 1 : 0.95 }}
               className={cn(
-                "glass absolute bottom-full mb-3 w-56 max-w-[calc(100vw-2.5rem)] rounded-2xl px-4 py-3 text-xs leading-relaxed text-foreground shadow-xl",
-                anchorRight ? "right-0" : "left-0"
+                "absolute bottom-full right-0 mb-3 w-56 max-w-[calc(100vw-2.5rem)]",
+                "rounded-2xl border border-[var(--glass-border)] bg-popover px-4 py-3",
+                "text-xs leading-relaxed text-foreground shadow-xl"
               )}
             >
               {HINTS[hintIndex]}
-              <span
-                className={cn(
-                  "absolute -bottom-1 size-3 rotate-45 border-b border-r border-[var(--glass-border)] bg-[var(--glass)]",
-                  anchorRight ? "right-6" : "left-6"
-                )}
-              />
+              <span className="absolute -bottom-1 right-6 size-3 rotate-45 border-b border-r border-[var(--glass-border)] bg-popover" />
             </motion.div>
           )}
         </AnimatePresence>
 
-        <motion.button
-          type="button"
-          onClick={onToggle}
-          aria-label={`Chat with ${MASCOT_NAME}, the site's AI mascot`}
-          className={cn(
-            "glass relative flex size-14 items-center justify-center rounded-full text-foreground shadow-xl outline-none",
-            "focus-visible:ring-2 focus-visible:ring-ring"
-          )}
-          whileHover={reducedMotion ? undefined : { scale: 1.08 }}
-          whileTap={reducedMotion ? undefined : { scale: 0.94 }}
-          animate={
-            reducedMotion
-              ? undefined
-              : { y: [0, -6, 0] }
-          }
-          transition={
-            reducedMotion
-              ? undefined
-              : { duration: 3, repeat: Infinity, ease: "easeInOut" }
-          }
-        >
-          <span className="animate-blob absolute inset-0 -m-1 rounded-full bg-gradient-brand opacity-40 blur-md" />
-          <Bot className="relative z-10 size-7" />
-          <span className="absolute -right-0.5 -top-0.5 z-10 size-3 rounded-full border-2 border-background bg-accent" />
-        </motion.button>
+        {use3D ? (
+          <>
+            <RobotStage
+              onHitAreaMove={handleHitAreaMove}
+              greetSignal={greetSignal}
+              onUnavailable={handleUnavailable}
+            />
+            {/* The hit area walks with the robot instead of the canvas
+                swallowing pointer events across its whole footprint. */}
+            <button
+              type="button"
+              onClick={onToggle}
+              aria-label={label}
+              className="absolute rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              style={{
+                width: HIT_SIZE,
+                height: HIT_SIZE,
+                left: hit.x - HIT_SIZE / 2,
+                top: hit.y - HIT_SIZE / 2,
+              }}
+            />
+          </>
+        ) : (
+          <motion.button
+            type="button"
+            onClick={onToggle}
+            aria-label={label}
+            className="glass relative flex size-14 items-center justify-center rounded-full text-foreground shadow-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            whileHover={reducedMotion ? undefined : { scale: 1.08 }}
+            whileTap={reducedMotion ? undefined : { scale: 0.94 }}
+            animate={reducedMotion ? undefined : { y: [0, -6, 0] }}
+            transition={
+              reducedMotion
+                ? undefined
+                : { duration: 3, repeat: Infinity, ease: "easeInOut" }
+            }
+          >
+            <span className="animate-blob absolute inset-0 -m-1 rounded-full bg-gradient-brand opacity-40 blur-md" />
+            <Bot className="relative z-10 size-7" />
+            <span className="absolute -right-0.5 -top-0.5 z-10 size-3 rounded-full border-2 border-background bg-accent" />
+          </motion.button>
+        )}
       </div>
-    </motion.div>
+    </div>
   );
 }
