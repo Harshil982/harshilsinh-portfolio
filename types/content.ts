@@ -31,10 +31,21 @@ export interface NavItem {
   id: string;
   label: string;
   href: string;
+  /** Shown under the label inside a dropdown; omitted for top-level links. */
+  description?: string;
+}
+
+export interface NavGroup {
+  id: string;
+  label: string;
+  items: NavItem[];
 }
 
 export interface NavigationData {
-  navItems: NavItem[];
+  /** Collapsed into dropdowns in the header. */
+  navGroups: NavGroup[];
+  /** Rendered as top-level links beside the dropdowns. */
+  navLinks: NavItem[];
   ctaLabel: string;
   ctaHref: string;
 }

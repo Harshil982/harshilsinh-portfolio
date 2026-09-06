@@ -1,14 +1,73 @@
 {
-  "navItems": [
-    { "id": "about", "label": "About", "href": "#about" },
-    { "id": "experience", "label": "Experience", "href": "#experience" },
-    { "id": "projects", "label": "Projects", "href": "#projects" },
-    { "id": "showcase", "label": "Frontend Showcase", "href": "#showcase" },
-    { "id": "open-source", "label": "Open Source", "href": "#open-source" },
-    { "id": "skills", "label": "Skills", "href": "#skills" },
-    { "id": "timeline", "label": "Timeline", "href": "#timeline" },
-    { "id": "certificates", "label": "Certificates", "href": "#certificates" },
-    { "id": "testimonials", "label": "Testimonials", "href": "#testimonials" },
+  "navGroups": [
+    {
+      "id": "work",
+      "label": "Work",
+      "items": [
+        {
+          "id": "projects",
+          "label": "Projects",
+          "href": "#projects",
+          "description": "Enterprise applications, built end-to-end"
+        },
+        {
+          "id": "showcase",
+          "label": "Frontend Showcase",
+          "href": "#showcase",
+          "description": "Live marketing sites and UI craft"
+        },
+        {
+          "id": "open-source",
+          "label": "Open Source",
+          "href": "#open-source",
+          "description": "Libraries I publish and maintain"
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "href": "#process",
+          "description": "How a feature goes from spec to production"
+        }
+      ]
+    },
+    {
+      "id": "profile",
+      "label": "About",
+      "items": [
+        {
+          "id": "about",
+          "label": "About Me",
+          "href": "#about",
+          "description": "Background and how I work"
+        },
+        {
+          "id": "experience",
+          "label": "Experience",
+          "href": "#experience",
+          "description": "Where I've shipped"
+        },
+        {
+          "id": "skills",
+          "label": "Skills",
+          "href": "#skills",
+          "description": "The stack I work in"
+        },
+        {
+          "id": "timeline",
+          "label": "Timeline",
+          "href": "#timeline",
+          "description": "The path so far"
+        },
+        {
+          "id": "certificates",
+          "label": "Certificates",
+          "href": "#certificates",
+          "description": "Continuous learning, on record"
+        }
+      ]
+    }
+  ],
+  "navLinks": [
     { "id": "blog", "label": "Blog", "href": "/blog" },
     { "id": "contact", "label": "Contact", "href": "#contact" }
   ],
