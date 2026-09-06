@@ -2,8 +2,8 @@ import { CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/animations/reveal";
 import { MonogramAvatar } from "@/components/animations/gradient-mesh-art";
-import { StatCard } from "@/components/cards/stat-card";
-import { personal, stats } from "@/lib/data";
+// import { StatCard } from "@/components/cards/stat-card";
+import { personal } from "@/lib/data";
 import { SHOW_PERSONAL_AVATAR } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -49,11 +49,17 @@ export function About() {
           </RevealGroup>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {/* Stat tiles — hidden for now. Uncomment this block and the two
+            imports above to bring them back; the values are derived in
+            lib/data.ts, so they stay correct while dormant. `stats` is still
+            read by the chatbot knowledge base, so nothing is orphaned. */}
+        {/*
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <StatCard key={stat.id} stat={stat} delay={index * 0.05} />
           ))}
         </div>
+        */}
       </div>
     </section>
   );

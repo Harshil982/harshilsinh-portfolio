@@ -1,7 +1,31 @@
 [
-  { "id": "experience", "label": "Years of Experience", "value": 3, "suffix": "+", "icon": "calendar" },
-  { "id": "projects", "label": "Enterprise Projects", "value": 2, "suffix": "", "icon": "folder-kanban" },
-  { "id": "technologies", "label": "Technologies Used", "value": 20, "suffix": "+", "icon": "layers" },
-  { "id": "commits", "label": "Commits Shipped", "value": 1200, "suffix": "+", "icon": "git-commit-horizontal" },
-  { "id": "coffee", "label": "Cups of Coffee", "value": 900, "suffix": "+", "icon": "coffee" }
+  {
+    "id": "experience",
+    "label": "Years shipping production frontends",
+    "suffix": "+",
+    "decimals": 1,
+    "icon": "calendar",
+    "derived": "yearsOfExperience"
+  },
+  {
+    "id": "projects",
+    "label": "Enterprise platforms shipped",
+    "suffix": "",
+    "icon": "folder-kanban",
+    "derived": "enterpriseProjects"
+  },
+  {
+    "id": "packages",
+    "label": "npm packages published",
+    "suffix": "",
+    "icon": "layers",
+    "derived": "npmPackages"
+  },
+  {
+    "id": "upload",
+    "label": "1.8GB upload on Afterwords, down from ~13 min",
+    "value": 95,
+    "suffix": "s",
+    "icon": "gauge"
+  }
 ]

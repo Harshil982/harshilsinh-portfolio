@@ -53,8 +53,13 @@ export interface NavigationData {
 export interface Stat {
   id: string;
   label: string;
-  value: number;
+  /** Literal value; omitted when `derived` supplies it from real data. */
+  value?: number;
+  /** Key of a deriver in lib/data.ts that counts the underlying records. */
+  derived?: string;
   suffix: string;
+  /** Decimal places for the counter. Defaults to 0. */
+  decimals?: number;
   icon: string;
 }
 
