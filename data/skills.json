@@ -5,65 +5,135 @@
       "label": "Frontend",
       "icon": "layout-panel-left",
       "skills": [
-        { "name": "React", "icon": "react", "level": 95, "years": 3 },
-        { "name": "Next.js", "icon": "nextjs", "level": 90, "years": 3 },
-        { "name": "TypeScript", "icon": "typescript", "level": 88, "years": 3 },
-        { "name": "JavaScript", "icon": "javascript", "level": 95, "years": 3 },
-        { "name": "Redux", "icon": "redux", "level": 85, "years": 3 },
-        { "name": "Zustand", "icon": "zustand", "level": 80, "years": 1 },
-        { "name": "Tailwind CSS", "icon": "tailwind", "level": 92, "years": 3 },
-        { "name": "Material UI", "icon": "mui", "level": 85, "years": 3 },
-        { "name": "HTML5", "icon": "html5", "level": 96, "years": 3 },
-        { "name": "CSS3", "icon": "css3", "level": 92, "years": 3 }
+        {
+          "name": "React",
+          "icon": "react"
+        },
+        {
+          "name": "Next.js",
+          "icon": "nextjs"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescript"
+        },
+        {
+          "name": "JavaScript",
+          "icon": "javascript"
+        },
+        {
+          "name": "Redux",
+          "icon": "redux"
+        },
+        {
+          "name": "Zustand",
+          "icon": "zustand"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwind"
+        },
+        {
+          "name": "Material UI",
+          "icon": "mui"
+        },
+        {
+          "name": "HTML5",
+          "icon": "html5"
+        },
+        {
+          "name": "CSS3",
+          "icon": "css3"
+        }
       ]
     },
     {
       "id": "backend",
-      "label": "Backend",
+      "label": "Backend & Data",
       "icon": "server",
       "skills": [
-        { "name": "Node.js", "icon": "nodejs", "level": 78, "years": 2 },
-        { "name": "Express.js", "icon": "express", "level": 76, "years": 2 },
-        { "name": "Sequelize", "icon": "sequelize", "level": 72, "years": 2 }
-      ]
-    },
-    {
-      "id": "database",
-      "label": "Database",
-      "icon": "database",
-      "skills": [
-        { "name": "PostgreSQL", "icon": "postgresql", "level": 75, "years": 2 },
-        { "name": "MongoDB", "icon": "mongodb", "level": 70, "years": 2 }
+        {
+          "name": "Node.js",
+          "icon": "nodejs"
+        },
+        {
+          "name": "Express.js",
+          "icon": "express"
+        },
+        {
+          "name": "Sequelize",
+          "icon": "sequelize"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "postgresql"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "mongodb"
+        },
+        {
+          "name": "REST APIs",
+          "icon": "rest"
+        }
       ]
     },
     {
       "id": "testing",
-      "label": "Testing",
+      "label": "Testing & Quality",
       "icon": "flask-conical",
       "skills": [
-        { "name": "Jest", "icon": "jest", "level": 80, "years": 2 },
-        { "name": "React Testing Library", "icon": "testing-library", "level": 78, "years": 2 }
+        {
+          "name": "Jest",
+          "icon": "jest"
+        },
+        {
+          "name": "React Testing Library",
+          "icon": "testing-library"
+        },
+        {
+          "name": "Accessibility",
+          "icon": "accessibility"
+        },
+        {
+          "name": "Performance",
+          "icon": "performance"
+        }
       ]
     },
     {
-      "id": "version-control",
-      "label": "Version Control",
-      "icon": "git-branch",
-      "skills": [
-        { "name": "GitHub", "icon": "github", "level": 90, "years": 3 },
-        { "name": "Bitbucket", "icon": "bitbucket", "level": 82, "years": 3 },
-        { "name": "GitLab", "icon": "gitlab", "level": 75, "years": 2 }
-      ]
-    },
-    {
-      "id": "tools",
-      "label": "Tools & Platform",
+      "id": "tooling",
+      "label": "Tooling & Collaboration",
       "icon": "wrench",
       "skills": [
-        { "name": "JIRA", "icon": "jira", "level": 85, "years": 3 },
-        { "name": "Azure DevOps", "icon": "azure", "level": 75, "years": 1 },
-        { "name": "AWS (Lambda, S3)", "icon": "cloud", "level": 65, "years": 1 },
-        { "name": "Figma", "icon": "figma", "level": 70, "years": 2 }
+        {
+          "name": "GitHub",
+          "icon": "github"
+        },
+        {
+          "name": "Bitbucket",
+          "icon": "bitbucket"
+        },
+        {
+          "name": "GitLab",
+          "icon": "gitlab"
+        },
+        {
+          "name": "JIRA",
+          "icon": "jira"
+        },
+        {
+          "name": "Azure DevOps",
+          "icon": "azure"
+        },
+        {
+          "name": "AWS (Lambda, S3)",
+          "icon": "aws"
+        },
+        {
+          "name": "Figma",
+          "icon": "figma"
+        }
       ]
     }
   ]

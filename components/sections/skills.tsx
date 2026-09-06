@@ -10,11 +10,15 @@ export function Skills() {
         <SectionHeading
           eyebrow="Skills"
           title="A toolkit built for shipping"
-          description="Grouped by where I use them most — frontend-heavy, but backed by real backend and tooling range."
+          description="Grouped by where I use them most — frontend-heavy, with real backend, testing and tooling range behind it."
         />
 
+        {/* Two columns with `items-start`, not three stretched to equal height.
+            The old 3-up grid forced every card to match the tallest, which left
+            the two-item categories as mostly-empty boxes. Four balanced groups
+            packing to their own height reads far calmer. */}
         <RevealGroup
-          className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-16 grid items-start gap-6 lg:grid-cols-2"
           stagger={0.08}
         >
           {skills.categories.map((category) => (

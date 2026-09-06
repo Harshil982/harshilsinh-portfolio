@@ -1,8 +1,6 @@
 export interface Skill {
   name: string;
   icon: string;
-  level: number;
-  years: number;
 }
 
 export interface SkillCategory {

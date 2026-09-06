@@ -1,4 +1,13 @@
-import { Cloud, Code2, Layers, type LucideIcon } from "lucide-react";
+import {
+  Accessibility,
+  Cloud,
+  Code2,
+  Gauge,
+  GitBranch,
+  Layers,
+  Webhook,
+  type LucideIcon,
+} from "lucide-react";
 import type { IconType } from "react-icons";
 import {
   SiReact,
@@ -53,6 +62,13 @@ const techRegistry: Record<string, TechIconEntry> = {
   jira: { icon: SiJirasoftware, color: "#0052CC" },
   azure: { icon: Cloud, color: "#0078D4" },
   figma: { icon: SiFigma, color: "#F24E1E" },
+  // Practices and platforms, not brands — without these they would all fall
+  // back to the same grey glyph and read as one repeated icon.
+  git: { icon: GitBranch, color: "#F05032" },
+  aws: { icon: Cloud, color: "#FF9900" },
+  rest: { icon: Webhook, color: "#6AA9F4" },
+  accessibility: { icon: Accessibility, color: "#4CC38A" },
+  performance: { icon: Gauge, color: "#F5A623" },
 };
 
 export function getTechIcon(key: string): TechIconEntry {
