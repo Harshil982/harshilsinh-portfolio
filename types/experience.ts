@@ -73,5 +73,7 @@ export interface Achievement {
   title: string;
   description: string;
   metric: string;
+  /** Key of a deriver in lib/data.ts that computes `metric` from real records. */
+  derived?: string;
   icon: string;
 }

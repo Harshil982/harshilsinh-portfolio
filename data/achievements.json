@@ -1,30 +1,31 @@
 [
   {
-    "id": "features-shipped",
-    "title": "40+ Features Shipped",
-    "description": "Delivered end-to-end across two enterprise platforms, from spec to production.",
-    "metric": "40+",
-    "icon": "rocket"
-  },
-  {
-    "id": "bundle-optimization",
-    "title": "Performance Wins",
-    "description": "Cut key route bundle sizes through code-splitting and dynamic imports.",
-    "metric": "-35%",
+    "id": "upload-performance",
+    "title": "1.8GB upload, down from ~13 min",
+    "description": "Afterwords sent gigabyte video messages as one S3 request. Rebuilt on multipart upload with a Web Worker and a bounded queue: 12–15 min became 90–100 sec.",
+    "metric": "~95s",
     "icon": "gauge"
   },
   {
-    "id": "test-coverage",
-    "title": "Test Coverage Focus",
-    "description": "Brought critical CRUD and booking flows under Jest + RTL coverage.",
-    "metric": "High",
+    "id": "modules",
+    "title": "Product modules shipped",
+    "description": "Across five enterprise platforms — station management, bookings, invoicing, inventory, and role administration.",
+    "metric": "28+",
+    "derived": "productModules",
+    "icon": "layers"
+  },
+  {
+    "id": "tests",
+    "title": "Tests on universal-api-errors",
+    "description": "Run on every push against Node 22 and 24 via GitHub Actions. The repository is public, so the number is checkable.",
+    "metric": "91",
     "icon": "shield-check"
   },
   {
-    "id": "sprint-reliability",
-    "title": "Sprint Reliability",
-    "description": "Consistently closed sprint commitments across two-week Agile cycles.",
-    "metric": "95%",
-    "icon": "calendar-check"
+    "id": "bundle-size",
+    "title": "TreeKit, gzipped",
+    "description": "A full tree component with cascading selection, keyboard navigation and virtualisation — and no runtime dependency beyond React.",
+    "metric": "7.3KB",
+    "icon": "rocket"
   }
 ]

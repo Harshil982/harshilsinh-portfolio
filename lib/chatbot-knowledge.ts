@@ -13,6 +13,7 @@ import {
   faqs,
   contact,
   socials,
+  yearsSinceCareerStart,
 } from "@/lib/data";
 
 function formatSkills(): string {
@@ -133,7 +134,7 @@ export function buildKnowledgeBase(): string {
 ${personal.title} · ${personal.tagline}
 Location: ${personal.location}
 Currently: ${personal.currentRole} at ${personal.currentCompany}
-Years of experience: ${personal.yearsOfExperience}+
+Years of experience: ${yearsSinceCareerStart()}+
 Available for new opportunities: ${personal.availableForWork ? "Yes" : "Not currently"} (open to remote: ${contact.availability.openToRemote ? "yes" : "no"}, open to relocation: ${contact.availability.openToRelocation ? "yes" : "no"})
 
 Bio: ${personal.bio}
